@@ -1,0 +1,48 @@
+.navbar-container{
+    width: 100%;
+    background-color: #F2F2F2;
+    height: 7vh;
+}
+
+.brandname{
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.brand-logo-container{
+    margin-left: 5%;
+    margin-top: 0.85%;
+    display: inline-block;
+}
+
+.navbar-links{
+    margin-left: 57.5%;
+    display: inline-block;
+    width: 17%;
+}
+
+.link{
+    display: inline-block;
+    padding-right: 7%;
+    font-size: 18px;
+    margin-top: 0.6%;
+    font-weight: 400;
+}
+
+.loginbtn{
+    font-size: 16px;
+    width: 105px;
+    border: 2px solid black;
+    padding: 6px;
+    font-weight: 400;
+    cursor: pointer;
+    background-color: #FF6F00;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+}
+
+.login-container{
+    display: inline-block;
+    margin-left: 2%;
+}
