@@ -1,0 +1,14 @@
+/* Carousel.css */
+.carousel-container {
+    max-width: 600px;
+    margin-left: 58%;
+    margin-top: -16%;
+    overflow: hidden; /* Ensure no overflow of images */
+}
+
+.carousel-container img {
+    width: 100%;
+    height: 50vh; /* Set a fixed height */
+    object-fit: contain; /* Ensure the image covers the area without stretching */
+    display: block;
+}

@@ -11,7 +11,6 @@ const NavBar = () => {
                     <li className="link">Home</li>
                     <li className="link">Events</li>
                     <li className="link">Contact Us</li>
-                    {/* <li className="link loginbtn">Login</li> */}
                 </ul>
             </div>
             <div className="login-container">
