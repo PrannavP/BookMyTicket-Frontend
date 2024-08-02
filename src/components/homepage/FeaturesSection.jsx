@@ -71,6 +71,9 @@ const FeaturesSection = () => {
                         </li>
                     </ul>
                 </div>
+                <div className="fs-get-started-button-container">
+                    <button className='get-started-button'>Get Started</button>
+                </div>
             </div>
 
             <div className="right-column attendees-features-column">
@@ -124,6 +127,9 @@ const FeaturesSection = () => {
                             </div>
                         </li>
                     </ul>
+                </div>
+                <div className="fs-get-started-button-container">
+                    <button className='get-started-button'>Get Started</button>
                 </div>
             </div>
         </div>

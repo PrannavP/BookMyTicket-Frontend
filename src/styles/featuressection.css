@@ -62,3 +62,10 @@ li{
     font-weight: 400;
     font-size: 19px;
 }
+
+.fs-get-started-button-container{
+    margin-left: 38%;
+    margin-top: 2%;
+    width: 30%;
+    margin-bottom: 3%;
+}
