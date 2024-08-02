@@ -1,4 +1,4 @@
-import '../styles/herosection.css';
+import '../../styles/herosection.css';
 
 import { Link } from 'react-router-dom';
 

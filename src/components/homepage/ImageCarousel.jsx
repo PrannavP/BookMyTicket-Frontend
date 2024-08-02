@@ -2,11 +2,11 @@ import Slider from "react-slick";
 
 import 'slick-carousel/slick/slick.css'; 
 import 'slick-carousel/slick/slick-theme.css'; 
-import '../styles/carousel.css'
+import '../../styles/carousel.css'
 
-import eventImage1 from '../assets/images/eventimage1.jpg';
-import eventImage2 from '../assets/images/eventimage2.jpg';
-import eventImage3 from '../assets/images/eventimage3.jpg';
+import eventImage1 from '../../assets/images/eventimage1.jpg';
+import eventImage2 from '../../assets/images/eventimage2.jpg';
+import eventImage3 from '../../assets/images/eventimage3.jpg';
 
 const ImageCarousel = () => {
     let settings = {
