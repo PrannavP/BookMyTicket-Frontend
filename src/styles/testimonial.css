@@ -1,0 +1,55 @@
+.testimonials-section{
+    margin-top: 4%;
+    margin-bottom: 5%;
+}
+
+.testimonials-section-heading-container h3{
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    font-size: 25px;    
+}
+
+.testimonials-container{
+    margin-top: 2%;
+    margin-left: 11.5%;
+}
+
+.testimonial{
+    padding: 1%;
+    display: inline-block;
+    width: 24%;
+    border-radius: 3%;
+    height: 35vh;
+    background-color: #F2F2F2;
+    margin-right: 5%;
+}
+
+.testimonial-user-image{
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+
+.testimonial-talks p{
+    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.testimonial-user-image img{
+    border-radius: 55%;
+    width: 35%;
+}
+
+.testimonial-name{
+    font-size: 19px;
+    margin-top: 5%;
+    margin-left: 2%;
+}
+
+.testimonial-type{
+    font-size: 19px;
+    margin-top: 5%;
+    margin-left: 2%;
+}
