@@ -1,0 +1,40 @@
+footer{
+    background-color: #F2F2F2;
+    height: 6.5vh;
+}
+
+
+footer div{
+    display: inline-block;
+}
+
+.footer-brand-container{
+    margin-left: 4%;
+    margin-top: 0.4%;
+}
+
+.footer-brand-container h3{
+    font-size: 27px;
+    padding-top: 2%;
+    font-weight: 500;
+}
+
+.footer-links-container{
+    width: 30%;
+    margin-top: 1.1%;
+    margin-right: 16%;
+    float: right;
+}
+
+.footer-links > li{
+    display: inline-block;
+    padding-right: 5%;
+    font-size: 19px;
+    margin-top: -10px;
+}
+
+.footer-copyright-container{
+    float: right;
+    margin-right: -25%;
+    margin-top: 0.5%;
+}

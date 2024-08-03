@@ -15,6 +15,10 @@ const router = createBrowserRouter([
 	{
 		path: '/events',
 		element: <EventsPage />
+	},
+	{
+		path: '/contactus',
+		element: <div>contact us page is getting build...</div>
 	}
 ]);
 
