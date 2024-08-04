@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import EventsPage from './pages/EventsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import LoginPage from './pages/LoginPage';
 
 const router = createBrowserRouter([
 	{
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
 	{
 		path: '/contactus',
 		element: <div>contact us page is getting build...</div>
-	}
+	},
+	{
+		path: '/login',
+		element: <LoginPage />
+	},
 ]);
 
 function App() {

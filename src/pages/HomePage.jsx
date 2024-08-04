@@ -1,8 +1,8 @@
-import NavBar from "../components/homepage/NavBar";
-import HeroSection from '../components/homepage/HeroSection';
-import FeaturesSection from "../components/homepage/FeaturesSection";
-import Testimonials from "../components/homepage/Testimonials";
-import Footer from "../components/homepage/Footer";
+import NavBar from "../components/homepageComponent/NavBar";
+import HeroSection from '../components/homepageComponent/HeroSection';
+import FeaturesSection from "../components/homepageComponent/FeaturesSection";
+import Testimonials from "../components/homepageComponent/Testimonials";
+import Footer from "../components/homepageComponent/Footer";
 
 const HomePage = () => {
     return(

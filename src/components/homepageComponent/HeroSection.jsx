@@ -12,7 +12,7 @@ const HeroSection = () => {
                 <p>Explore events tailored just for you.</p>
             </div>
             <div className="buttons-container">
-                <button className="get-started-button">Get Started</button>
+                <button className="get-started-button"><Link to="/login">Get Started</Link></button>
                 <button className="view-events-button"><Link to="/events">View Events</Link></button>
             </div>
             <ImageCarousel />
