@@ -1,0 +1,98 @@
+.main-container{
+    outline: 1px solid red;
+    height: 100vh;
+}
+
+.brand-container{
+    display: inline-block;
+    margin-top: 19%;
+    margin-left: 10%;
+}
+
+.brand-name-container h3{
+    color: white;
+    font-size: 26px;
+    letter-spacing: 3px;
+    font-weight: 600;
+    margin-left: 17%;
+    margin-bottom: 5%;
+}
+
+.brand-slogan-container p{
+    color: white;
+    font-size: 19px;
+}
+
+.loginform-container{
+    margin-top: 12%;
+    margin-right: 10%;
+    float: right;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    padding: 0.8% 3%;
+    width: 20%;
+    height: 38.2vh;
+}
+
+.login-form-heading > h3{
+    text-align: center;
+    font-size: 19px;
+    font-weight: 500;
+}
+
+.input-container{
+    margin-left: -5%;
+    margin-top: 9%;
+    width: 21vw;
+}
+
+.input-container > label{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.input-container > input{
+    width: 100%;
+    height: 3.5vh;
+    border-radius: 5px;
+    border: 0.5px solid #757575;
+    font-size: 17px;
+    font-weight: 300;
+    padding: 1% 2%;
+    margin-bottom: 5%;
+    margin-top: 1%;
+}
+
+.forgot-link-container{
+    margin-top: -2%;
+    margin-left: 63%;
+    width: 42%;
+}
+
+.forgot-link-container p{
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.form-buttons{
+    margin-top: 6%;
+    margin-left: -5%;
+    width: 110%;
+}
+
+.login-btn{
+    width: 100%;
+    padding: 2% 0;
+    font-size: 17px;
+    font-weight: 500;
+    background-color: #FF6F00;
+    border: none;
+    cursor: pointer;
+}
+
+.form-buttons p{
+    margin-top: 3%;
+    font-size: 16px;
+    color: #FF6F00;
+    text-align: center;
+}
