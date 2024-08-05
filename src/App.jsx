@@ -6,6 +6,8 @@ import HomePage from './pages/HomePage';
 import EventsPage from './pages/EventsPage';
 import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
+import RegisterPage from './pages/RegisterPage';
 
 const router = createBrowserRouter([
 	{
@@ -26,9 +28,13 @@ const router = createBrowserRouter([
 		element: <LoginPage />
 	},
 	{
+		path: '/register',
+		element: <RegisterPage />
+	},
+	{
 		path: '/dashboard',
-		element: <h1>Dashboard is getting build...</h1>
-	}
+		element: <DashboardPage />
+	},
 ]);
 
 function App() {
