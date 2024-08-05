@@ -1,5 +1,6 @@
 // login form component
 
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import '../../styles/loginform.css';
 import axios from 'axios';
@@ -8,11 +9,11 @@ const LoginForm = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
-	const [loading, setLoading] = useState(false);
+	const [success, setSuccess] = useState('');
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setLoading(true);
+		setSuccess();
 		setError('');
 		if(!email || !password){
 			alert('Please fill in all fields');
@@ -25,13 +26,24 @@ const LoginForm = () => {
 				email,
 				password
 			});
-
+			
+			setSuccess('Login Successful');
 			window.location.href = '/dashboard';
 		}catch(err){
-			setError('Login Failed. Please Check Your Credentials');
+			if(err.response && err.response.data && err.response.data.error){
+				setError(err.response.data.error);
+				// console.log(error);
+			}else{
+				setError('Please enter valid credentials!');
+			}
 		}finally{
-			setLoading(false);
+			setEmail('');
+			setPassword('');
 		};
+	};
+
+	const handleErrorClick = () => {
+		setError('');
 	};
 
     return (
@@ -52,18 +64,20 @@ const LoginForm = () => {
 					</div>
 					<div className="input-container">
 						<label htmlFor="name">Email</label><br />
-						<input type="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)}/><br />
+						<input type="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} required={true} /><br />
 
 						<label htmlFor="password">Password</label><br />
-						<input type="password" name='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
+						<input type="password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
 					</div>
 					<div className="forgot-link-container">
 						<p>Forgot Password?</p>
 					</div>
 					<div className="form-buttons">
-						<button className='login-btn' onClick={handleSubmit} disabled={loading}>Login</button><br />
-						<p>Don't have an account? Register</p>
+						<button className='login-btn' onClick={handleSubmit}>Login</button><br />
+						<p><Link to='/register'>Don't have an account? Register</Link></p>
 					</div>
+					{error && <p className='errorMsg' onClick={handleErrorClick}>{error}</p>}
+					{success && <p className='successMsg'>{success}</p>}
 				</div>
 			</div>
 		</>

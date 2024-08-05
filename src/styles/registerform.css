@@ -1,0 +1,65 @@
+.registerform-container{
+    background-color: #F2F2F2;
+    width: 30%;
+    padding: 0.5% 1%;
+    margin-top: 3%;
+    margin-left: 35%;
+    border-radius: 10px;
+}
+
+.register-form-heading{
+    margin-bottom: 5%;
+    text-align: center;
+}
+
+.register-form-heading h3{
+    font-size: 20px;
+}
+
+.first-name-input-container{
+    margin-left: 18%;
+}
+
+.last-name-input-container{
+    margin-left: -16.5%;
+}
+
+.other-input-container{
+    margin-left: 18%;
+}
+
+.first-name-input-container, .last-name-input-container{
+    display: inline-block;
+}
+
+input[name='firstname'], input[name='lastname']{
+    width: 59% !important;
+    height: 3vh;
+    padding: 0.5% 1%;
+    font-size: 16px;
+    font-weight: 300;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+.other-input-container > input{
+    height: 3vh;
+    width: 70%;
+    padding: 0.5% 1%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.register-btn{
+    width: 61.5%;
+    margin-top: 3%;
+    margin-left: 15.8%;
+    height: 4vh;
+    background-color: #FF6F00;
+    border: none;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 2%;
+}

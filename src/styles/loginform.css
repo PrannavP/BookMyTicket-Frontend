@@ -96,3 +96,17 @@
     color: #FF6F00;
     text-align: center;
 }
+
+/* error message */
+.errorMsg{
+    position: absolute;
+    top: 3%;
+    right: 5%;
+    /* border: 1px solid black; */
+    background-color: red;
+    color: white;
+    padding: 0.7% 1%;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
