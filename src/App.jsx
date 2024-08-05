@@ -25,6 +25,10 @@ const router = createBrowserRouter([
 		path: '/login',
 		element: <LoginPage />
 	},
+	{
+		path: '/dashboard',
+		element: <h1>Dashboard is getting build...</h1>
+	}
 ]);
 
 function App() {

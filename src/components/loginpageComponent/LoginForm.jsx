@@ -2,19 +2,36 @@
 
 import { useState } from 'react';
 import '../../styles/loginform.css';
+import axios from 'axios';
 
 const LoginForm = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [error, setError] = useState('');
+	const [loading, setLoading] = useState(false);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setLoading(true);
+		setError('');
 		if(!email || !password){
 			alert('Please fill in all fields');
 			return;
 		}
-		console.log(email);
-		console.log(password);
+		
+		// api login request
+		try{
+			const response = await axios.post('http://localhost:3000/login', {
+				email,
+				password
+			});
+
+			window.location.href = '/dashboard';
+		}catch(err){
+			setError('Login Failed. Please Check Your Credentials');
+		}finally{
+			setLoading(false);
+		};
 	};
 
     return (
@@ -44,7 +61,7 @@ const LoginForm = () => {
 						<p>Forgot Password?</p>
 					</div>
 					<div className="form-buttons">
-						<button className='login-btn' onClick={handleSubmit}>Login</button><br />
+						<button className='login-btn' onClick={handleSubmit} disabled={loading}>Login</button><br />
 						<p>Don't have an account? Register</p>
 					</div>
 				</div>
