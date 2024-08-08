@@ -63,3 +63,47 @@ input[name='firstname'], input[name='lastname']{
     cursor: pointer;
     margin-bottom: 2%;
 }
+
+.login-link{
+    margin-left: 22%;
+    font-size: 15px;
+    color: #FF6F00;
+}
+
+/* Container for the profile image upload */
+.image-upload-container {
+    margin-bottom: 2%; /* Add space below the image upload section */
+    text-align: center; /* Center align the image container */
+}
+
+/* Label for the profile image input */
+.image-upload-label {
+    display: block;
+    width: 120px; /* Adjust width as needed */
+    height: 120px; /* Adjust height as needed */
+    border-radius: 50%; /* Make the image circular */
+    background-color: #ccc; /* Light grey background for the placeholder */
+    overflow: hidden; /* Hide overflow to maintain circular shape */
+    margin: 0 auto; /* Center the label horizontally */
+    position: relative; /* Positioning context for the placeholder text */
+    cursor: pointer; /* Indicate that the area is clickable */
+}
+
+/* Style for the displayed profile image */
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the circle */
+}
+
+/* Style for the upload text */
+.upload-text {
+    line-height: 120px; /* Center text vertically */
+    color: #555; /* Text color */
+    font-size: 16px; /* Font size */
+}
+
+/* Hide the file input */
+input[type="file"] {
+    display: none; /* Hide the file input */
+}

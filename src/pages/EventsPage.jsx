@@ -1,7 +1,9 @@
+import NavBar from "../components/homepageComponent/NavBar";
+
 const EventsPage = () => {
     return(
         <>
-            <h1>Events Page</h1>
+            <NavBar />
         </>
     )
 };
