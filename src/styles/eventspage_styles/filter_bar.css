@@ -1,0 +1,81 @@
+.filter-bar-section{
+    margin-top: 1.5%;
+    margin-left: 0.1%;
+    display: inline-block;
+    width: 17%;
+    height: 82vh;
+    outline: 2px solid red;
+    background-color: #F2F2F2;
+}
+
+.filterbar-title-holder{
+    padding-left: 4.5% !important;
+    padding: 2%;
+}
+
+.filterbar-title-holder h3{
+    font-size: 20px;
+}
+
+.heading4-title{
+    font-size: 19px;
+    font-weight: 500;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    margin-left: 3.5%;
+}
+
+.filterbar-bytime-holder, .filterby-genre-holder{
+    margin-bottom: 3%;
+}
+
+.filterbar-bydate-holder .from-date-holder label,
+.filterbar-bydate-holder .to-date-holder label,
+.filterbar-bytime-holder form label,
+.filterby-genre-holder form label,
+.filterby-location-holder form label {
+    font-size: 17px;
+    font-weight: 400;
+    margin-left: 3.5%;
+}
+
+.filterbar-bydate-holder .from-date-holder input,
+.filterbar-bydate-holder .to-date-holder input{
+    margin-bottom: 15px;
+    margin-top: 2.5%;
+}
+
+.filterbar-bydate-holder .from-date-holder input,
+.filterbar-bydate-holder .to-date-holder input,
+.filterbar-bytime-holder form input,
+.filterby-genre-holder form input,
+.filterby-location-holder form input{
+    margin-left: 3.5%;
+}
+
+.filterby-location-holder form input,
+.filterbar-bydate-holder form input{
+    width: 80%;
+    height: 3.8vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.filterby-searchbtn-holder{
+    margin-top: 10%;
+}
+
+.filterby-searchbtn-holder button{
+    width: 36%;
+    height: 4.7vh;
+    font-weight: 500;
+    background-color: #FF6F00;
+    border: none;
+    outline: 1px solid black;
+    color: white;
+    cursor: pointer;
+    margin-left: 28%;
+    border-radius: 2.5%;
+}

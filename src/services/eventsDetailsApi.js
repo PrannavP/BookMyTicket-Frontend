@@ -1,18 +1,12 @@
 import axios from "axios";
 
-// getting all events details from the api
+const BASE_URL = "http://localhost:3000/events";
 
-const eventsURL = "http://localhost:3000/events";
-
-const getAllEvents = async () => {
+export const fetchEvents = async () => {
     try{
-        const response = await axios.get(eventsURL);
+        const response = await axios.get(BASE_URL);
         return response.data;
-        // console.log(response.data);
     }catch(err){
-        // console.error(err);
-        throw err;
+        throw(err);
     }
 };
-
-export default getAllEvents;

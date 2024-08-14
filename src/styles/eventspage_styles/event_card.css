@@ -1,0 +1,64 @@
+.events-details-section{
+    float: right;
+    width: 80%;
+}
+
+.events-details-cards{
+    margin-top: 2%;
+    /* margin-left: 20%; */
+    margin-right: 0.5%;
+    /* outline: 2px solid red; */
+}
+
+.event-detail-card{
+    padding-top: 0.6%;
+    /* outline: 2px solid yellow; */
+    background-color: #F2F2F2;
+    display: inline-block;
+    width: 24.5%;
+    height: 54vh;
+    padding-left: 0.6%;
+    padding-right: 0.6%;
+    margin-right: 3%;
+}
+
+.event-title-holder h3{
+    font-size: 20px;
+    padding-bottom: 4%;
+}
+
+div > p{
+    font-size: 17px;
+    font-weight: 400;
+    margin-bottom: 3%;
+}
+
+.event-detail-card > .event-date-holder, .event-time-holder{
+    display: inline-block;
+}
+
+.event-detail-card > .event-date-holder{
+    margin-right: 7%;
+}
+
+.event-detail-card .event-image-holder{
+    margin-bottom: 2%;
+}
+
+.event-bookbtn-holder{
+    width: 100%;
+    margin-left: 28%;
+}
+
+.event-bookbtn-holder button{
+    margin-top: 1.8%;
+    width: 32%;
+    height: 4.7vh;
+    background-color: #FF6F00;
+    border: 0.5px solid rgb(136, 136, 136);
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+}

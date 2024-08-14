@@ -12,9 +12,12 @@ const ImageCarousel = () => {
     let settings = {
         dots: true,
         infinite: true,
-        speed: 500,
+        speed: 3500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        autoplay:true,
+		autoplaySpeed: 3500,
+		cssEase: "linear"
     };
 
     return(

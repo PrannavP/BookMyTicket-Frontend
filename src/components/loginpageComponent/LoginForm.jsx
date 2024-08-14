@@ -28,12 +28,14 @@ const LoginForm = () => {
 			});
 			
 			setSuccess('Login Successful');
+			console.log(response.data);
 
-			// redirect after 1200ms
 			setTimeout(() => {
-				window.location.href = '/dashboard';
+				if(response.data.login){
+					localStorage.setItem('token', response.data.token);
+					window.location.href = './dashboard';
+				};
 			}, 1200);
-
 		}catch(err){
 			if(err.response && err.response.data && err.response.data.error){
 				setError(err.response.data.error);
