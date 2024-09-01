@@ -5,13 +5,13 @@ import FilterBar from "../components/eventspageComponent/FilterBar";
 import '../styles/eventspage_styles/filter_bar.css';
 
 const EventsPage = () => {
-    return(
+    return (
         <>
             <NavBar />
             <FilterBar />
             <EventDetailsCard />
         </>
-    )
+    );
 };
 
 export default EventsPage;

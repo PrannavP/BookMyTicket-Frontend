@@ -1,6 +1,7 @@
 import './styles/app.css';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { EventProvider } from './context/EventContext';
 
 import HomePage from './pages/HomePage';
 import EventsPage from './pages/EventsPage';
@@ -17,7 +18,9 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/events',
-		element: <EventsPage />
+		element: <EventProvider>
+					<EventsPage />
+				</EventProvider>
 	},
 	{
 		path: '/contactus',
@@ -43,6 +46,6 @@ function App() {
 			<RouterProvider router={router} />
 		</>
 	)
-};
+}
 
 export default App;

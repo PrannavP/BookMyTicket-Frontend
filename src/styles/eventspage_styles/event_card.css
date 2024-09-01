@@ -11,12 +11,13 @@
 }
 
 .event-detail-card{
+    margin-bottom: 3%;
     padding-top: 0.6%;
     /* outline: 2px solid yellow; */
     background-color: #F2F2F2;
     display: inline-block;
     width: 24.5%;
-    height: 54vh;
+    height: 54vh; /* Set a minimum height */
     padding-left: 0.6%;
     padding-right: 0.6%;
     margin-right: 3%;
@@ -25,12 +26,20 @@
 .event-title-holder h3{
     font-size: 20px;
     padding-bottom: 4%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
-div > p{
+.event-card-info-div > p{
     font-size: 17px;
     font-weight: 400;
     margin-bottom: 3%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
 }
 
 .event-detail-card > .event-date-holder, .event-time-holder{

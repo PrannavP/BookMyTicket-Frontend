@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 // login form component
 
 import { Link } from 'react-router-dom';
@@ -28,13 +29,14 @@ const LoginForm = () => {
 			});
 			
 			setSuccess('Login Successful');
-			console.log(response.data);
+			// console.log(response.data);
 
 			setTimeout(() => {
 				if(response.data.login){
 					localStorage.setItem('token', response.data.token);
 					window.location.href = './dashboard';
-				};
+					// console.log(response.data.user);
+				}
 			}, 1200);
 		}catch(err){
 			if(err.response && err.response.data && err.response.data.error){
@@ -46,7 +48,7 @@ const LoginForm = () => {
 		}finally{
 			setEmail('');
 			setPassword('');
-		};
+		}
 	};
 
 	const handleErrorClick = () => {

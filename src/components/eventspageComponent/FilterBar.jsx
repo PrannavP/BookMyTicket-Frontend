@@ -1,7 +1,49 @@
-const FilterBar = () => {
-    return(
-        <div className="filter-bar-section">
+import { useContext, useState } from "react";
+import { EventContext } from "../../context/EventContext";
 
+const FilterBar = () => {
+    const { applyFilters } = useContext(EventContext);
+
+    const [filters, setFilters] = useState({
+        location: '',
+        fromDate: '',
+        toDate: '',
+        time: [],
+        genre: [],
+    });
+
+    const handleFilterSubmit = async (event) => {
+        event.preventDefault();
+        await applyFilters(filters);
+    };
+
+    const handleLocationChange = (e) => {
+        setFilters({ ...filters, location: e.target.value });
+    };
+
+    const handleGenreChange = (e) => {
+        const value = e.target.name;
+        setFilters((prevFilters) => {
+            const newGenre = prevFilters.genre.includes(value)
+                ? prevFilters.genre.filter((genre) => genre !== value)
+                : [...prevFilters.genre, value];
+            return { ...prevFilters, genre: newGenre };
+        });
+    };
+
+    // const handleResetFilter = () => {
+    //     setFilters({
+    //         location: '',
+    //         fromDate: '',
+    //         toDate: '',
+    //         time: [],
+    //         genre: [],  
+    //     });
+    //     loadDefaultEvents();
+    // };
+
+    return (
+        <div className="filter-bar-section">
             <div className="filterbar-title-holder">
                 <h3>Filter</h3>
             </div>
@@ -47,19 +89,49 @@ const FilterBar = () => {
             <div className="filterby-genre-holder">
                 <h4 className="heading4-title">By Genre</h4>
                 <form>
-                    <input type="checkbox" name="music" id="music" />
+                    <input
+                        type="checkbox"
+                        name="Music"
+                        id="Music"
+                        checked={filters.genre.includes("Music")}
+                        onChange={handleGenreChange}
+                    />
                     <label htmlFor="music">Music</label><br />
 
-                    <input type="checkbox" name="comedy" id="comedy" />
+                    <input
+                        type="checkbox"
+                        name="Comedy"
+                        id="Comedy"
+                        checked={filters.genre.includes("Comedy")}
+                        onChange={handleGenreChange}
+                    />
                     <label htmlFor="comedy">Comedy</label><br />
 
-                    <input type="checkbox" name="motivational" id="motivational" />
+                    <input
+                        type="checkbox"
+                        name="Motivational"
+                        id="Motivational"
+                        checked={filters.genre.includes("Motivational")}
+                        onChange={handleGenreChange}
+                    />
                     <label htmlFor="motivational">Motivational</label><br />
 
-                    <input type="checkbox" name="theatre" id="theatre" />
+                    <input
+                        type="checkbox"
+                        name="Theatre"
+                        id="Theatre"
+                        checked={filters.genre.includes("Theatre")}
+                        onChange={handleGenreChange}
+                    />
                     <label htmlFor="theatre">Theatre</label><br />
 
-                    <input type="checkbox" name="educational" id="educational" />
+                    <input
+                        type="checkbox"
+                        name="Educational"
+                        id="Educational"
+                        checked={filters.genre.includes("Educational")}
+                        onChange={handleGenreChange}
+                    />
                     <label htmlFor="educational">Educational</label>
                 </form>
             </div>
@@ -69,16 +141,16 @@ const FilterBar = () => {
             <div className="filterby-location-holder">
                 <h4 className="heading4-title">By Location</h4>
                 <form>
-                    <input type="text" placeholder="Location..." />
+                    <input type="text" placeholder="Location..." value={filters.location} onChange={handleLocationChange} />
                 </form>
             </div>
 
             <div className="filterby-searchbtn-holder">
-                <button>Search</button>
+                <button onClick={handleFilterSubmit}>Search</button>
+                {/* <button onClick={handleResetFilter}>Reset</button> */}
             </div>
-
         </div>
-    )
+    );
 };
 
 export default FilterBar;
