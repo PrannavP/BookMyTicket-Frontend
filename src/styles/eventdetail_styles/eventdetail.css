@@ -1,0 +1,211 @@
+.event-details-section {
+    margin: 1%;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    height: 85vh;
+}
+
+.eventdetail-image-holder {
+    margin-left: 1.5%;
+    margin-top: 1%;
+    display: inline-block;
+}
+
+.eventdetail-information-section {
+    margin-left: 12%;
+    margin-top: 2%;
+}
+
+.eventname-holder {
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.eventdetail-information-row_first-container {
+    margin-top: 10%;
+    display: flex;
+    gap: 6em;
+    align-items: center;
+}
+
+
+.eventdetail-information-eventdate, .eventdetail-information-eventtime {
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+    font-weight: 500;
+}
+
+.eventdate-holder, .eventtime-holder, .eventlocation-holder{
+    margin-left: 1em;
+    font-size: 18px;
+}
+
+.eventdetail-information-row_second-container{
+    margin-top: 10%;
+}
+
+.eventdetail-information-location{
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+    font-weight: 500;
+}
+
+.eventdetail-information-row_third-container{
+    margin-top: 10%;
+}
+
+.eventdetail-information-genre-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-top: 10%;
+}
+
+.eventdetail-information-genre {
+    display: inline-block;
+    background-color: #007BFF;
+    padding: 0.5em;
+    color: white;
+    border-radius: 4px;
+}
+
+.eventdetail-information-genre p {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
+}
+
+#divider{
+    margin-left: -18%;
+    margin-top: 10%;
+    width: 180%;
+    height: 2px;
+    background-color: black;
+}
+
+.eventdetail-ticketing-section{
+    margin-top: 7%;
+}
+
+.ticketing-section-title-holder p{
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.ticketing-section-price-section{
+    margin-top: 2%;
+}
+
+.general-price-section-container{
+    margin-top: 3%;
+}
+
+.general-price-section-container p{
+    display: inline-block;
+    font-size: 18px;
+}
+
+.general-price-holder{
+    font-weight: bold;
+    margin-left: 10%;
+}
+
+.vip-price-section-container{
+    margin-top: 6%;
+}
+
+.vip-price-section-container p{
+    display: inline-block;
+    font-size: 18px;
+}
+
+.vip-price-holder{
+    font-weight: bold;
+    margin-left: 19.7%;
+}
+
+.booknow-button-container{
+    margin-right: 14%;
+}
+
+.ticketing-section-buttons-section{
+    margin-left: 17%;
+    margin-top: 8%;
+}
+
+.booknow-button{
+    width: 9vw;
+    height: 6vh;
+    font-weight: 500;
+    background-color: #FF6F00;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 4%;
+}
+
+.save-button{
+    width: 9vw;
+    height: 6vh;
+    font-weight: 500;
+    background-color: #007BFF;
+    color: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    border-radius: 4%;
+}
+
+.button-container{
+    display: inline-block;
+}
+
+.event-detail-bottom-row{
+    margin-top: 5%;
+}
+
+.ticketing-section-ticketsold-section{
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    gap: 0.5em; /* Add space between the icon and the text */
+}
+
+.tickets-sold-holder {
+    margin: 0; /* Remove default margin */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+.share-event-section{
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+    gap: 0.5em; /* Add space between the icon and the text */
+}
+
+.share-event-holder {
+    margin: 0; /* Remove default margin */
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+/* last row */
+.eventdetail-information-row_first-container {
+    margin-top: 10%;
+    display: flex;
+    gap: 6em;
+    align-items: center;
+}
+
+.eventdetail-ticket-sold-section, .eventdetail-share-section {
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+    font-weight: 500;
+}
+
+.tickets-sold-holder, .share-button-holder{
+    margin-left: 1em;
+    font-weight: 400;
+    font-size: 16px;
+}

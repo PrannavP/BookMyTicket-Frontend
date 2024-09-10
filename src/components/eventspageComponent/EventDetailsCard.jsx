@@ -2,6 +2,7 @@ import { useEffect, useContext } from "react";
 import { EventContext } from "../../context/EventContext";
 import '../../styles/eventspage_styles/event_card.css';
 import Loader from "../Loader/Loader";
+import { Link } from "react-router-dom";
 
 const EventDetailsCard = () => {
     const { events, loadDefaultEvents, loading, error } = useContext(EventContext);
@@ -47,7 +48,7 @@ const EventDetailsCard = () => {
                             <p>Location: {event.event_location}</p>
                         </div>
                         <div className="event-bookbtn-holder">
-                            <button>Buy Ticket</button>
+                            <button><Link to={`/events/${event.id}`}>Book Now</Link></button>
                         </div>
                     </li>
                 ))}

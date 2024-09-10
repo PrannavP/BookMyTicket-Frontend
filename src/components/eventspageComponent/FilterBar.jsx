@@ -1,5 +1,6 @@
 import { useContext, useState } from "react";
 import { EventContext } from "../../context/EventContext";
+import '../../styles/eventspage_styles/filter_bar.css'
 
 const FilterBar = () => {
     const { applyFilters } = useContext(EventContext);
@@ -31,6 +32,14 @@ const FilterBar = () => {
         });
     };
 
+    const handleFromDateChange = (e) => {
+        setFilters({ ...filters, fromDate: e.target.value });
+    };
+
+    const handleToDateChange = (e) => {
+        setFilters({ ...filters, toDate: e.target.value });
+    };
+
     // const handleResetFilter = () => {
     //     setFilters({
     //         location: '',
@@ -54,13 +63,13 @@ const FilterBar = () => {
                 <div className="from-date-holder">
                     <form>
                         <label htmlFor="fromdate">From</label><br />
-                        <input type="date" name="fromdate" id="fromdate" />
+                        <input type="date" name="fromdate" id="fromdate" value={filters.fromDate} onChange={handleFromDateChange} />
                     </form>
                 </div>
                 <div className="to-date-holder">
                     <form>
                         <label htmlFor="todate">To</label><br />
-                        <input type="date" name="todate" id="todate" />
+                        <input type="date" name="todate" id="todate" value={filters.toDate} onChange={handleToDateChange} />
                     </form>
                 </div>
             </div>

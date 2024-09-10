@@ -1,7 +1,6 @@
 import axios from "axios";
-
+// import { useHistory } from 'react-router-dom';
 import LogoutButton from "../components/dashboardpageComponent/LogoutButton";
-import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { useState, useEffect } from "react";
 
@@ -15,7 +14,8 @@ const DashboardPage = () => {
 
             if(!TOKEN){
                 setError('No token found');
-                return;
+                window.location.href = './login';
+                // history.push('/login');
             }
 
             try{
@@ -42,42 +42,6 @@ const DashboardPage = () => {
 
     return (
         <>
-            <h1>Dashboard</h1>
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            {/* {error ? (
-                <>
-                    <p>{error}</p>
-                    <Navigate to="/" />
-                </>
-            ) : userInfo ? (
-                <>
-                    <p>Name: {userInfo.full_name}</p>
-                    <p>Address: {userInfo.address}</p>
-                    <p>Contact: {userInfo.contact_number}</p>
-                    <p>Role: {userInfo.role}</p>
-                </>
-            ) : (
-                <p>Loading...</p>
-            )} */}
-
             <LogoutButton />
         </>
     );

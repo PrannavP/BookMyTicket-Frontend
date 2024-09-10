@@ -9,6 +9,7 @@ import NotFoundPage from './pages/NotFoundPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import RegisterPage from './pages/RegisterPage';
+import EventDetailsPage from "./pages/EventDetailsPage";
 
 const router = createBrowserRouter([
 	{
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
 		path: '/dashboard',
 		element: <DashboardPage />
 	},
+	{
+		path: '/events/:id',
+		element: <EventDetailsPage />
+	}
 ]);
 
 function App() {

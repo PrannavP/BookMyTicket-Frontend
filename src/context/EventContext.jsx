@@ -29,6 +29,8 @@ export const EventProvider = ({ children }) => {
                 response = await filterEvents(`http://localhost:3000/api/events/filter?location=${filters.location}`);
             } else if (filters.genre.length > 0) {
                 response = await filterEvents(`http://localhost:3000/api/events/filter?genre=${filters.genre.join(',')}`);
+            } else if(filters.fromDate && filters.toDate){
+                response = await filterEvents(`http://localhost:3000/api/events/filter?fromDate=${filters.fromDate}&toDate=${filters.toDate}`);
             } else {
                 response = await fetchEvents();
             }
