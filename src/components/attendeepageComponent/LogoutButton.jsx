@@ -1,3 +1,5 @@
+import '../../styles/attendee_styles/logout_button.css';
+
 const LogoutButton = () => {
     const handleLogout = () => {
         // delete localstorage
@@ -9,7 +11,7 @@ const LogoutButton = () => {
 
     return(
         <>
-            <button onClick={handleLogout}>Logout</button>
+            <button className='attendee-logout-button' onClick={handleLogout}>Logout</button>
         </>
     );
 };

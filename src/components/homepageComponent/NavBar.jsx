@@ -19,7 +19,7 @@ const NavBar = () => {
                 <button className='loginbtn' ><Link to="/login">Login</Link></button>
             </div>
         </div>
-    )
+    );
 };
 
 export default NavBar;

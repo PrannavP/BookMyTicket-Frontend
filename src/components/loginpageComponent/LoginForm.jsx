@@ -34,7 +34,7 @@ const LoginForm = () => {
 			setTimeout(() => {
 				if(response.data.login){
 					localStorage.setItem('token', response.data.token);
-					window.location.href = './dashboard';
+					window.location.href = './attendeedashboard';
 					// console.log(response.data.user);
 				}
 			}, 1200);

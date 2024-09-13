@@ -1,0 +1,36 @@
+.logged-in-navbar-container{
+    width: 100%;
+    background-color: #F2F2F2;
+    height: 7vh;
+}
+
+.logged-in-brandname{
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.logged-in-brand-logo-container{
+    margin-left: 5%;
+    margin-top: 0.85%;
+    display: inline-block;
+}
+
+.logged-in-navbar-links{
+    margin-left: 51.5%;
+    display: inline-block;
+    width: 32%;
+}
+
+.logged-in-link{
+    display: inline-block;
+    padding-right: 7%;
+    font-size: 18px;
+    margin-top: 0.6%;
+    font-weight: 400;
+}
+
+.logged-in-profile-name{
+    font-weight: bold;
+    font-size: 19px;
+    margin-left: 8%;
+}

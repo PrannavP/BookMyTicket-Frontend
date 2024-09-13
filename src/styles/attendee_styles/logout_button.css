@@ -1,0 +1,12 @@
+.attendee-logout-button{
+    width: 30%;
+    height: auto;
+    font-weight: 500;
+    font-size: 16.5px;
+    background-color: #FF6F00;
+    border: none;
+    /* margin-left: 28%; */
+    cursor: pointer;
+    padding-top: 1.7%;
+    padding-bottom: 1.7%;
+}

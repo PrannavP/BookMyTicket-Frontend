@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 
+import { useUser } from "../../hooks/useUser";
+
 // importing css
 import '../../styles/eventdetail_styles/eventdetail.css';
 
@@ -19,12 +21,14 @@ const EventDetailComponent = () => {
 
     const [event, setEvent] = useState(null);
     const [error, setError] = useState('');
+    const { userInfo } = useUser();
 
     const getEventDetails = useCallback(async () => {
         try {
             const response = await axios.get(`http://localhost:3000/api/events/eventdetails/${id}`);
             setEvent(response.data);
-            console.log(response.data);
+            console.log(`this is doing..... ${response.data}`);
+
         } catch (err) {
             setError(err);
             console.log(err);
@@ -44,7 +48,19 @@ const EventDetailComponent = () => {
     };
 
     const handleBookButtonClick = () => {
+        if (!userInfo) {
+            // If the user is not logged in, show a message or redirect
+            alert("You must log in to book this event.");
+            window.location.href = '/login'; // Redirect to login
+            return;
+        }
+
         alert("Book Now?");
+        // send mail fnc()
+        axios.post(`http://localhost:3000/sendEmail/eventbooking/${id}`, {
+            userEmail: userInfo.email,
+            userFullName: userInfo.full_name
+        });
     };
 
     const handleSaveButtonClick = () => {
@@ -130,7 +146,7 @@ const EventDetailComponent = () => {
                                     <IconContext.Provider value={{ size: "1.6em" }}>
                                         <FaCheck />
                                     </IconContext.Provider>
-                                    <p className="tickets-sold-holder">{event.event_total_tickets - event.event_remaining_tickets}Tickets Sold</p>
+                                    <p className="tickets-sold-holder">{event.event_total_tickets - event.event_remaining_tickets} Tickets Sold</p>
                                 </div>
                                 <div className="eventdetail-share-section">
                                     <IconContext.Provider value={{ size: "1.6em" }}>
