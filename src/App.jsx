@@ -11,16 +11,14 @@ import LoginPage from './pages/LoginPage';
 import AttendeeDashboardPage from './pages/Attendee/AttendeeDashboardPage';
 import RegisterPage from './pages/RegisterPage';
 import EventDetailsPage from "./pages/EventDetailsPage";
-import TestPage from './pages/TestPage';
-import AttendeeProfilePage from './pages/Attendee/AttendeeProfilePage';
-import AttendeeTicketsPage from './pages/Attendee/AttendeeTicketsPage';
+import TestPage from './pages/TestPage';import AttendeeTicketsPage from './pages/Attendee/AttendeeTicketsPage';
 import AttendeeUpcomingEventsPage from './pages/Attendee/AttendeeUpcomingEventsPage';
 import AttendeeSettingsPage from './pages/Attendee/AttendeeSettingsPage';
 
 const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <HomePage />,
+		element: <UserProvider><HomePage /></UserProvider>,
 		errorElement: <NotFoundPage />
 	},
 	{
@@ -57,15 +55,7 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/test',
-		element: <UserProvider>
-					<TestPage />
-				</UserProvider>
-	},
-	{
-		path: '/profile',
-		element: <UserProvider>
-					<AttendeeProfilePage />
-				</UserProvider>
+		element: <TestPage />
 	},
 	{
 		path: '/yourtickets',

@@ -26,55 +26,20 @@ export const UserProvider = ({ children }) => {
         }
     };
 
-    // useEffect(() => {
-    //     const fetchUserInfo = async () => {
-    //         const TOKEN = localStorage.getItem('token');
-
-    //         if (!TOKEN || isTokenExpired(TOKEN)) {
-    //             // If no token or token has expired, log out the user
-    //             localStorage.removeItem('token');
-    //             window.location.href = '/login'; // Redirect to login page
-    //             return;
-    //         }
-
-    //         try {
-    //             const decodedToken = jwtDecode(TOKEN);
-    //             const userId = decodedToken.id;
-
-    //             const response = await axios.get(`http://localhost:3000/userinfo/${userId}`, {
-    //                 headers: {
-    //                     'x-auth-token': TOKEN,
-    //                 },
-    //             });
-
-    //             setUserInfo(response.data.user);
-    //         } catch (err) {
-    //             console.error('Error fetching user info: ', err);
-    //             setError("Something went wrong while getting user data", err);
-
-    //             setTimeout(() => {
-    //                 localStorage.removeItem('token');
-    //                 window.location.href = '/login';
-    //             }, 1200);
-    //         }
-    //     };
-
-    //     fetchUserInfo();
-    // }, []);
-
-
     useEffect(() => {
         const fetchUserInfo = async () => {
             const TOKEN = localStorage.getItem('token');
 
             if (!TOKEN || isTokenExpired(TOKEN)) {
-                // If no token or token has expired, set userInfo to null
+                console.log("Token is missing or expired. Redirecting...");
                 setUserInfo(null);
+                localStorage.removeItem('token');
                 return;
             }
 
             try {
                 const decodedToken = jwtDecode(TOKEN);
+                // console.log("Token is valid, decoded token:", decodedToken);
                 const userId = decodedToken.id;
 
                 const response = await axios.get(`http://localhost:3000/userinfo/${userId}`, {
@@ -83,6 +48,7 @@ export const UserProvider = ({ children }) => {
                     },
                 });
 
+                // console.log("User info fetched: ", response.data.user);
                 setUserInfo(response.data.user);
             } catch (err) {
                 console.error('Error fetching user info: ', err);

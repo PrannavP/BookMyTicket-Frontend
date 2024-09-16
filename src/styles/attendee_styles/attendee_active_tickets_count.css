@@ -1,0 +1,33 @@
+.upcoming-events-count-container{
+    background-color: #F2F2F2;
+    color: #000000;
+    width: 24%;
+    height: 18vh;
+    margin-top: 5%;
+    margin-left: 6%;
+    border-radius: 18px;
+    padding: 1%;
+    display: inline-block;
+}
+
+.upcoming-events-count-heading-container{
+    float: left;
+    margin-top: -1.5%;
+    font-size: 20px;
+}
+
+.upcoming-events-count-icon-container{
+    float: right;
+    margin-top: -2%;
+}
+
+.upcoming-events-count-value-container{
+    margin-top: 18%;
+    font-size: 32px;
+}
+
+.upcoming-events-count-message-container{
+    margin-top: 6.5%;
+    font-size: 15px;
+    font-weight: 500;
+}

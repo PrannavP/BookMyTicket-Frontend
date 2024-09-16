@@ -3,6 +3,8 @@ import { EventContext } from "../../context/EventContext";
 import '../../styles/eventspage_styles/event_card.css';
 import Loader from "../Loader/Loader";
 import { Link } from "react-router-dom";
+import EventErrorCompnent from "./EventErrorComponent";
+
 
 const EventDetailsCard = () => {
     const { events, loadDefaultEvents, loading, error } = useContext(EventContext);
@@ -22,7 +24,7 @@ const EventDetailsCard = () => {
     return (
         <div className="events-details-section">
             {loading &&  <Loader />}
-            {error && <p>Error fetching data: {error.message}</p>}
+            {error && <EventErrorCompnent />}
             <ul className="events-details-cards">
                 {events.map(event => (
                     <li key={event.id} className="event-detail-card">

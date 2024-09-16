@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useUser } from "../../hooks/useUser";
 
 import SideNavBar from "../../components/attendeepageComponent/SideNavBar";
+import TopBar from "../../components/attendeepageComponent/TopBar";
 
 const AttendeeTicketsPage = () => {
     const TOKEN = localStorage.getItem('token');
@@ -22,6 +23,7 @@ const AttendeeTicketsPage = () => {
     return(
         <>
             <SideNavBar profileImageUrl={userInfo.image} profileName={userInfo.full_name} />
+            <TopBar title="My Tickets" />
         </>
     );
 };

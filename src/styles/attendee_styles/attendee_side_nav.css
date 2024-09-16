@@ -4,6 +4,7 @@
     width: 20%;
     border-top-right-radius: 5%;
     border-bottom-right-radius: 5%;
+    float: left;
 }
 
 .attendee-side-navbar-firstrow{

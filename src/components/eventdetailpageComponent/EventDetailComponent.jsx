@@ -57,10 +57,11 @@ const EventDetailComponent = () => {
 
         alert("Book Now?");
         // send mail fnc()
-        axios.post(`http://localhost:3000/sendEmail/eventbooking/${id}`, {
-            userEmail: userInfo.email,
-            userFullName: userInfo.full_name
-        });
+        // axios.post(`http://localhost:3000/sendEmail/eventbooking/${id}`, {
+        //     userEmail: userInfo.email,
+        //     userFullName: userInfo.full_name
+        // });
+        window.location.href = '/test';
     };
 
     const handleSaveButtonClick = () => {

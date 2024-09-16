@@ -1,0 +1,33 @@
+.active-tickets-count-container{
+    background-color: #F2F2F2;
+    color: #000000;
+    width: 24%;
+    height: 18vh;
+    margin-top: 5%;
+    margin-left: 16%;
+    border-radius: 18px;
+    padding: 1%;
+    display: inline-block;
+}
+
+.active-tickets-count-heading-container{
+    float: left;
+    margin-top: -1.5%;
+    font-size: 20px;
+}
+
+.active-tickets-count-icon-container{
+    float: right;
+    margin-top: -2%;
+}
+
+.active-tickets-count-value-container{
+    margin-top: 18%;
+    font-size: 32px;
+}
+
+.active-tickets-count-message-container{
+    margin-top: 6.5%;
+    font-size: 15px;
+    font-weight: 500;
+}

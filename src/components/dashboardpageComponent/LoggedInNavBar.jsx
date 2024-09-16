@@ -16,7 +16,7 @@ const LoggedInNavBar = ({ fullname }) => {
                     <li className="logged-in-link"><Link to="/">Home</Link></li>
                     <li className="logged-in-link"><Link to="/events">Events</Link></li>
                     <li className="logged-in-link"><Link to="/contactus">Contact Us</Link></li>
-                    <li className='logged-in-link logged-in-profile-name'><Link to="/profile">{firstName}</Link></li>
+                    <li className='logged-in-link logged-in-profile-name'><Link to="/attendeesettings">{firstName}</Link></li>
                 </ul>
             </div>
         </div>
