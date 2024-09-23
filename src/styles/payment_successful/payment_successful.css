@@ -1,0 +1,6 @@
+.payment-message-container{
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    
+}

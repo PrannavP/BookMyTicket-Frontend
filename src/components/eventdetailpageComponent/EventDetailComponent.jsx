@@ -4,6 +4,8 @@ import axios from "axios";
 
 import { useUser } from "../../hooks/useUser";
 
+import BookingConfirmationModal from "./BookingConfirmationModal";
+
 // importing css
 import '../../styles/eventdetail_styles/eventdetail.css';
 
@@ -21,13 +23,30 @@ const EventDetailComponent = () => {
 
     const [event, setEvent] = useState(null);
     const [error, setError] = useState('');
+    const [generalCategoryTicketQuantity, setgeneralCategoryTicketQuantity] = useState(0);
+    const [vipCategoryTicketQuantity, setvipCategoryTicketQuantity] = useState(0);
     const { userInfo } = useUser();
+
+    // modal related
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        if(localStorage.getItem('token')){
+            setIsModalOpen(true);
+        }else{
+            alert("Inorder to book login first!");
+        }
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     const getEventDetails = useCallback(async () => {
         try {
             const response = await axios.get(`http://localhost:3000/api/events/eventdetails/${id}`);
             setEvent(response.data);
-            console.log(`this is doing..... ${response.data}`);
+            // console.log(`this is doing..... ${response.data}`);
 
         } catch (err) {
             setError(err);
@@ -47,21 +66,13 @@ const EventDetailComponent = () => {
         return `${year}-${month}-${day}`;
     };
 
-    const handleBookButtonClick = () => {
-        if (!userInfo) {
-            // If the user is not logged in, show a message or redirect
-            alert("You must log in to book this event.");
-            window.location.href = '/login'; // Redirect to login
-            return;
+    // increase and decrease quantity function
+    const handleQuantityChange = (type, action) => {
+        if(type === 'general'){
+            setgeneralCategoryTicketQuantity(prev => action === "increase" ? prev + 1 : Math.max(prev - 1), 0);
+        }else if(type === 'vip'){
+            setvipCategoryTicketQuantity(prev => action === "increase" ? prev + 1 : Math.max(prev - 1), 0);
         }
-
-        alert("Book Now?");
-        // send mail fnc()
-        // axios.post(`http://localhost:3000/sendEmail/eventbooking/${id}`, {
-        //     userEmail: userInfo.email,
-        //     userFullName: userInfo.full_name
-        // });
-        window.location.href = '/test';
     };
 
     const handleSaveButtonClick = () => {
@@ -126,15 +137,58 @@ const EventDetailComponent = () => {
                                 <div className="general-price-section-container">
                                     <p className="general-price-title-holder">General Price:</p>
                                     <p className="general-price-holder">{event.event_ticket_general_price}</p>
+                                    {/* <button onClick={handlePayment}>Book Now</button> */}
+                                    <div className="quantity-controls">
+                                        <button 
+                                        type="button"
+                                        className="quantity-button"
+                                        onClick={() => handleQuantityChange('general', 'decreasee')}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="quantity-display">{generalCategoryTicketQuantity}</span>
+                                        <button 
+                                        type="button"
+                                        className="quantity-button"
+                                        onClick={() => handleQuantityChange('general', 'increase')}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                 </div>
                                 <div className="vip-price-section-container">
                                     <p className="vip-price-title-holder">VIP Price:</p>
                                     <p className="vip-price-holder">{event.event_ticket_vip_price}</p>
+                                    <div className="quantity-controls">
+                                        <button 
+                                        type="button"
+                                        className="quantity-button"
+                                        onClick={() => handleQuantityChange('vip', 'decreasee')}
+                                        >
+                                            -
+                                        </button>
+                                        <span className="quantity-display">{vipCategoryTicketQuantity}</span>
+                                        <button 
+                                        type="button"
+                                        className="quantity-button"
+                                        onClick={() => handleQuantityChange('vip', 'increase')}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div className="ticketing-section-buttons-section">
                                 <div className="button-container booknow-button-container">
-                                    <button className="booknow-button" onClick={handleBookButtonClick}>Book Ticket</button>
+                                    <button className="booknow-button" onClick={openModal}>Book Ticket</button>
+                                    <BookingConfirmationModal
+                                        isOpen={isModalOpen}
+                                        onClose={closeModal}
+                                        generalCategoryTicketQuantity={generalCategoryTicketQuantity}
+                                        vipCategoryTicketQuantity={vipCategoryTicketQuantity}
+                                        event={event}
+                                        user={userInfo}
+                                    />
                                 </div>
                                 <div className="button-container save-button-container">
                                     <button className="save-button" onClick={handleSaveButtonClick}>Save Event</button>
@@ -149,7 +203,7 @@ const EventDetailComponent = () => {
                                     </IconContext.Provider>
                                     <p className="tickets-sold-holder">{event.event_total_tickets - event.event_remaining_tickets} Tickets Sold</p>
                                 </div>
-                                <div className="eventdetail-share-section">
+                                <div className="eventdetail-share-section" style={{ cursor: "pointer" }} onClick={()=>alert("Saving Event!")}>
                                     <IconContext.Provider value={{ size: "1.6em" }}>
                                         <CiShare2 />
                                     </IconContext.Provider>

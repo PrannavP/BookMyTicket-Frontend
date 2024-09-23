@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 // login form component
 
 import { Link } from 'react-router-dom';
@@ -11,6 +10,15 @@ const LoginForm = () => {
 	const [password, setPassword] = useState('');
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
+
+	// login when clicked enter in input form
+	const handleKeyDown = (event) => {
+		if(event.key === "Enter"){
+			// trigger the submit function
+			event.preventDefault();
+			handleSubmit(event);
+		}
+	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -73,17 +81,17 @@ const LoginForm = () => {
 					</div>
 					<div className="input-container">
 						<label htmlFor="name">Email</label><br />
-						<input type="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} required={true} /><br />
+						<input type="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} onKeyDown={handleKeyDown} required={true} /><br />
 
 						<label htmlFor="password">Password</label><br />
-						<input type="password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} required={true} />
+						<input type="password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDown} required={true} />
 					</div>
 					<div className="forgot-link-container">
 						<p>Forgot Password?</p>
 					</div>
 					<div className="form-buttons">
 						<button className='login-btn' onClick={handleSubmit}>Login</button><br />
-						<p><Link to='/register'>Don't have an account? Register</Link></p>
+						<p><Link to='/register'>Dont have an account? Register</Link></p>
 					</div>
 					{error && <p className='errorMsg' onClick={handleErrorClick}>{error}</p>}
 					{success && <p className='successMsg'>{success}</p>}

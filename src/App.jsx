@@ -14,6 +14,7 @@ import EventDetailsPage from "./pages/EventDetailsPage";
 import TestPage from './pages/TestPage';import AttendeeTicketsPage from './pages/Attendee/AttendeeTicketsPage';
 import AttendeeUpcomingEventsPage from './pages/Attendee/AttendeeUpcomingEventsPage';
 import AttendeeSettingsPage from './pages/Attendee/AttendeeSettingsPage';
+import SuccessfulPayment from './pages/SuccessfulPaymentPage';
 
 const router = createBrowserRouter([
 	{
@@ -49,9 +50,11 @@ const router = createBrowserRouter([
 	},
 	{
 		path: '/events/:id',
-		element: <UserProvider>
-					<EventDetailsPage />
-				</UserProvider>
+		element: <EventProvider>
+					<UserProvider>
+						<EventDetailsPage />
+					</UserProvider>
+				</EventProvider>
 	},
 	{
 		path: '/test',
@@ -73,6 +76,12 @@ const router = createBrowserRouter([
 		path: '/attendeesettings',
 		element: <UserProvider>
 					<AttendeeSettingsPage />
+				</UserProvider>
+	},
+	{
+		path: '/successfulpayment/:id',
+		element: <UserProvider>
+					<SuccessfulPayment />
 				</UserProvider>
 	}
 ]);

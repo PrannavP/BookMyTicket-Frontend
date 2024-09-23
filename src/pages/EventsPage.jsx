@@ -11,7 +11,7 @@ const EventsPage = () => {
 
     const { userInfo } = useUser();
 
-    console.log(userInfo);
+    // console.log(userInfo);
 
     return (
         <>

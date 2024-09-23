@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 import { IconContext } from 'react-icons';
-import { TbCalendarEvent } from "react-icons/tb"
+import { IoTicketSharp } from "react-icons/io5"
 
 import '../../../styles/attendee_styles/attendee_active_tickets_count.css';
 
@@ -38,18 +38,18 @@ const ActiveTicketsSection = ({ userID }) => {
     return(
         <div className="upcoming-events-count-container">
             <div className="upcoming-events-count-heading-container">
-                <h4>Upcoming Events</h4>
+                <h4>Active Tickets</h4>
             </div>
             <div className="upcoming-events-count-icon-container">
             <IconContext.Provider value={{ size: "2.2em" }}>
-                <TbCalendarEvent />
+                <IoTicketSharp />
             </IconContext.Provider>
             </div>
             <div className="upcoming-events-count-value-container">
                 {eventsCount}
             </div>
             <div className="upcoming-events-count-message-container">
-                <p>You have {eventsCount} events coming soon</p>
+                <p>You have {eventsCount} tickets booked</p>
             </div>
         </div>
     );

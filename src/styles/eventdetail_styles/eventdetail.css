@@ -209,3 +209,177 @@
     font-weight: 400;
     font-size: 16px;
 }
+
+
+
+
+/* test */
+.general-cat-ticket-form{
+    display: inline-block;
+}
+
+.general-cat-ticket-price-input{
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: inherit;
+    color: #000000;
+    width: 26%;
+}
+
+
+
+/* quantity controls */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+}
+
+.quantity-button {
+    height: 32px;
+    width: 32px;
+    border: 1px solid #FF6F00;
+    background-color: white;
+    color: #FF6F00;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.quantity-button:hover {
+    background-color: #FF6F00;
+    color: white;
+}
+
+.quantity-display {
+    width: 32px;
+    text-align: center;
+    margin: 0 8px;
+}
+
+.ticketing-section-price-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.general-price-section-container,
+.vip-price-section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.general-price-title-holder,
+.vip-price-title-holder {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.general-price-holder,
+.vip-price-holder {
+    margin-bottom: 8px;
+}
+
+.button-container {
+    margin-top: 16px;
+}
+
+.booknow-button,
+.save-button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #FF6F00;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.booknow-button:hover,
+.save-button:hover {
+    background-color: #e65c00;
+}
+
+/* modal */
+/* Modal Overlay */
+.booking-confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content */
+  .booking-confirmation-modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left; /* Left-align text for better readability */
+    font-family: Arial, sans-serif; /* Use a clean, readable font */
+    line-height: 1.6; /* Increase line height for readability */
+    color: #333; /* Darker text color */
+  }
+  
+  .booking-confirmation-modal-content h2 {
+    margin-bottom: 20px; /* Add margin below the heading */
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .booking-confirmation-modal-content h3 {
+    margin-top: 20px;
+    font-size: 20px;
+    border-top: 1px solid #ccc; /* Add a top border for better sectioning */
+    padding-top: 10px;
+    color: #333;
+  }
+  
+  .booking-confirmation-modal-content h4 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Table for clearer layout of ticket details */
+  .booking-confirmation-modal-content table {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .booking-confirmation-modal-content table td {
+    padding: 10px 0;
+  }
+  
+  .booking-confirmation-modal-content table td:first-child {
+    text-align: left;
+  }
+  
+  .booking-confirmation-modal-content table td:last-child {
+    text-align: right;
+    font-weight: bold;
+  }
+  
+  /* Close Button Styling */
+  .booking-confirmation-modal-content button {
+    background-color: #FF6F00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+  }

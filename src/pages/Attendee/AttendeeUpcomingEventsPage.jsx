@@ -6,19 +6,20 @@ import SideNavBar from "../../components/attendeepageComponent/SideNavBar";
 import TopBar from "../../components/attendeepageComponent/TopBar";
 
 const AttendeeUpcomingEventsPage = () => {
-    const TOKEN = localStorage.getItem('token');
-    
-    useEffect(() => {
-        if(!TOKEN){
-            window.location.href = '/login';
-        }
-    }, [TOKEN]);
-
     const { userInfo, error } = useUser();
 
-    if(!userInfo) return <p>Loading...</p>;
+    useEffect(() => {
+        // If userInfo is null and there is no token, redirect to login
+        if (!userInfo && !localStorage.getItem('token')) {
+            window.location.href = '/login';
+        }
+    }, [userInfo]);
 
-    if(error) return <p>{error}</p>
+    // Handle loading state
+    if (!userInfo) return <p>Loading...</p>;
+
+    // Handle error state
+    if (error) return <p>{error}</p>;
 
     return(
         <>

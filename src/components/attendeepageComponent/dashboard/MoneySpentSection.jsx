@@ -49,7 +49,7 @@ const MoneySpentSection = ({ userID }) => {
                 Rs. {moneySpent}
             </div>
             <div className="money-spent-count-message-container">
-                <p>You spent Rs. {moneySpent}.</p>
+                <p>You spent Rs. {moneySpent}</p>
             </div>
         </div>
     );
