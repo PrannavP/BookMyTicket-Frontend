@@ -15,6 +15,10 @@ import TestPage from './pages/TestPage';import AttendeeTicketsPage from './pages
 import AttendeeUpcomingEventsPage from './pages/Attendee/AttendeeUpcomingEventsPage';
 import AttendeeSettingsPage from './pages/Attendee/AttendeeSettingsPage';
 import SuccessfulPayment from './pages/SuccessfulPaymentPage';
+import OrganizerDashboardPage from './pages/Organizer/OrgainzerDashboardPage';
+import OrganizerTicketsPage from './pages/Organizer/OrganizerTicketsPage';
+import OrganizerEventsPage from './pages/Organizer/OrganizerEventsPage';
+import OrganizerFinancesPage from './pages/Organizer/OrganizerFinancesPage';
 
 const router = createBrowserRouter([
 	{
@@ -83,7 +87,31 @@ const router = createBrowserRouter([
 		element: <UserProvider>
 					<SuccessfulPayment />
 				</UserProvider>
-	}
+	},
+	{
+		path: '/organizerdashboard',
+		element: <UserProvider>
+					<OrganizerDashboardPage />
+				</UserProvider>
+	},
+	{
+		path: '/organizertickets',
+		element: <UserProvider>
+					<OrganizerTicketsPage />
+				</UserProvider>
+	},
+	{
+		path: '/organizerevents',
+		element: <UserProvider>
+					<OrganizerEventsPage />
+				</UserProvider>
+	},
+	{
+		path: '/organizerfinances',
+		element: <UserProvider>
+					<OrganizerFinancesPage />
+				</UserProvider>
+	},
 ]);
 
 function App() {

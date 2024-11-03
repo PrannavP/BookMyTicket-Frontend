@@ -12,7 +12,7 @@ const HomePage = () => {
 
     return(
 		<>
-			{userInfo ? <LoggedInNavBar fullname={userInfo.full_name} /> : <NavBar />}
+			{userInfo ? <LoggedInNavBar fullname={userInfo.full_name} role={userInfo.role} /> : <NavBar />}
 			<HeroSection />
 			<FeaturesSection />
 			<Testimonials />

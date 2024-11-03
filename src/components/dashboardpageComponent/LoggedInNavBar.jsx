@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import '../../styles/LoggedInNavBar.css';
 
-const LoggedInNavBar = ({ fullname }) => {
+const LoggedInNavBar = ({ fullname, role }) => {
     const firstName = fullname.split(' ')[0];
+
+    const dashboardLink = role === "organizer" ? '/organizerdashboard' : "/attendeedashboard";
 
     return(
         <div className="logged-in-navbar-container">
@@ -16,7 +18,7 @@ const LoggedInNavBar = ({ fullname }) => {
                     <li className="logged-in-link"><Link to="/">Home</Link></li>
                     <li className="logged-in-link"><Link to="/events">Events</Link></li>
                     <li className="logged-in-link"><Link to="/contactus">Contact Us</Link></li>
-                    <li className='logged-in-link logged-in-profile-name'><Link to="/attendeesettings">{firstName}</Link></li>
+                    <li className='logged-in-link logged-in-profile-name'><Link to={dashboardLink}>{firstName}</Link></li>
                 </ul>
             </div>
         </div>

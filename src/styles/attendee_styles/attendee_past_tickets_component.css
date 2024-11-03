@@ -1,0 +1,54 @@
+/* Container styling */
+.attendee-past-ticket-lists-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-left: 24%;
+    margin-top: 3%;
+    width: 70%;
+    margin-bottom: 2%;
+}
+
+.attendee-past-ticket-lists-container-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.attendee-past-ticket-details-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.ticket-card {
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 300px;
+    border: 1px solid #e0e0e0;
+    transition: transform 0.2s ease;
+}
+
+.ticket-card:hover {
+    transform: translateY(-5px); 
+}
+
+.ticket-card h2 {
+    font-size: 20px;
+    color: #003366;
+    margin-bottom: 10px;
+}
+
+.ticket-card p {
+    margin: 8px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.ticket-card p strong {
+    color: #FF6F00;
+}

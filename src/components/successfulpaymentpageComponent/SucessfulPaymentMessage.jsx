@@ -11,30 +11,14 @@ import { useUser } from '../../hooks/useUser';
 
 const SuccessfulPaymentMessage = () => {
     const { id } = useParams();
-    // const [data, setData] = useState('');
     const [loading, setLoading] = useState(true);
     const [response, setResponse] = useState(null);
+    const [qrCodeImage, setQrCodeImage] = useState('');
     const { userInfo } = useUser();
-
-    useEffect(() => {
-        // decrease tickets and send mail to the booked attendee
-        if(response && response.paymentDetails.status === "COMPLETE" && userInfo){
-            console.log(userInfo);
-            try{
-                axios.post(`http://localhost:3000/sendEmail/eventbooking/${id}`, {
-                    userEmail: userInfo.email,
-                    userFullName: userInfo.full_name
-                });
-            }catch(err){
-                console.log("Error while decreasing tickets and sending email", err);
-            }
-        }
-    }, [id, response, userInfo]);
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const dataParam = urlParams.get('data');
-        // setData(dataParam);
 
         if (dataParam && id) {
             axios.post("http://localhost:3000/payment/confirmationpayment/", {
@@ -55,9 +39,7 @@ const SuccessfulPaymentMessage = () => {
     }, [id]);
 
     useEffect(() => {
-        if (response && response.paymentDetails) {
-            console.log(response.paymentDetails);
-
+        if (response && response.paymentDetails && userInfo) {
             // Store transaction details after payment confirmation
             axios.post('http://localhost:3000/transaction/store', {
                 product_code: response.paymentDetails.product_code,
@@ -65,7 +47,8 @@ const SuccessfulPaymentMessage = () => {
                 status: response.paymentDetails.status,
                 total_amount: response.paymentDetails.total_amount,
                 transaction_code: response.paymentDetails.transaction_code,
-                transaction_uuid: response.paymentDetails.transaction_uuid
+                transaction_uuid: response.paymentDetails.transaction_uuid,
+                booked_by: userInfo.id
             })
             .then(() => {
                 console.log('Transaction details stored successfully');
@@ -73,8 +56,33 @@ const SuccessfulPaymentMessage = () => {
             .catch(error => {
                 console.error('Error storing transaction details:', error);
             });
+
+            // Generate QR code
+            axios.post('http://localhost:3000/generate-qr', {
+                user_id: userInfo.id
+            })
+            .then(response => {
+                setQrCodeImage(response.data.qrCodeDataURL);
+            })
+            .catch(error => {
+                console.error("Error while QR code generation:", error);
+            });
         }
-    }, [response]);
+    }, [response, userInfo]);
+
+    useEffect(() => {
+        if (response && response.paymentDetails.status === "COMPLETE" && userInfo) {
+            try {
+                axios.post(`http://localhost:3000/sendEmail/eventbooking/${id}`, {
+                    userEmail: userInfo.email,
+                    userFullName: userInfo.full_name,
+                    ticketQRCodeImage: qrCodeImage,
+                });
+            } catch (err) {
+                console.log("Error while decreasing tickets and sending email", err);
+            }
+        }
+    }, [id, response, userInfo, qrCodeImage]);
 
     if (loading) {
         return <div>Payment Processing...</div>;
@@ -101,6 +109,11 @@ const SuccessfulPaymentMessage = () => {
                 </div>
             ) : (
                 <p>No data found</p>
+            )}
+            {qrCodeImage && (
+                <div className="payment-message-image-container">
+                    <img src={qrCodeImage} alt="Event Booking Ticket QR Code" />
+                </div>
             )}
         </div>
     );

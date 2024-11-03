@@ -52,6 +52,10 @@ input[name='firstname'], input[name='lastname']{
     font-weight: 300;
 }
 
+.checkbox-container{
+    margin-left: 18%;
+}
+
 .register-btn{
     width: 61.5%;
     margin-top: 3%;

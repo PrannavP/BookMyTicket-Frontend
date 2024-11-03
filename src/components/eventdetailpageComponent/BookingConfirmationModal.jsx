@@ -38,7 +38,8 @@ const BookingConfirmationModal = ({ isOpen, onClose, generalCategoryTicketQuanti
                 vip_cat_ticket: vipCategoryTicketQuantity,
                 total_price: totalPrice,
                 payment_status: "INITIATED",
-                booked_by: user.id
+                booked_by: user.id,
+                organized_by: event.event_organizer
             });
         }catch(err){
             console.log("Error while booking tickets.", err);

@@ -8,6 +8,7 @@ import axios from 'axios';
 const LoginForm = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	// const [isOrganizer, setIsOrganizer] = useState(false);
 	const [error, setError] = useState('');
 	const [success, setSuccess] = useState('');
 
@@ -19,6 +20,11 @@ const LoginForm = () => {
 			handleSubmit(event);
 		}
 	};
+
+	// const handleCheckboxChange = (event) => {
+	// 	setIsOrganizer(event.target.checked);
+	// 	console.log(event.target.checked);
+	// };
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -40,12 +46,16 @@ const LoginForm = () => {
 			// console.log(response.data);
 
 			setTimeout(() => {
-				if(response.data.login){
+				// redirection
+				if(response.data.login && response.data.user.role === 'attendee'){
 					localStorage.setItem('token', response.data.token);
 					window.location.href = './attendeedashboard';
-					// console.log(response.data.user);
+				}else{
+					localStorage.setItem('token', response.data.token);
+					window.location.href = './organizerdashboard';
 				}
-			}, 1200);
+			}, 1200)
+
 		}catch(err){
 			if(err.response && err.response.data && err.response.data.error){
 				setError(err.response.data.error);
@@ -89,10 +99,15 @@ const LoginForm = () => {
 					<div className="forgot-link-container">
 						<p>Forgot Password?</p>
 					</div>
+					{/* <div className="login-checkbox-container">
+						<label htmlFor="usertype">Login as organizer?</label>
+						<input type="checkbox" name='usertype' onChange={handleCheckboxChange} />
+					</div> */}
 					<div className="form-buttons">
 						<button className='login-btn' onClick={handleSubmit}>Login</button><br />
 						<p><Link to='/register'>Dont have an account? Register</Link></p>
 					</div>
+					
 					{error && <p className='errorMsg' onClick={handleErrorClick}>{error}</p>}
 					{success && <p className='successMsg'>{success}</p>}
 				</div>

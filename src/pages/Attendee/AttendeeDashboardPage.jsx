@@ -10,10 +10,19 @@ import MoneySpentSection from "../../components/attendeepageComponent/dashboard/
 const DashboardPage = () => {
     const { userInfo, error } = useUser();
 
+    console.log(userInfo);
+
     useEffect(() => {
         // If userInfo is null and there is no token, redirect to login
         if (!userInfo && !localStorage.getItem('token')) {
             window.location.href = '/login';
+        }
+    }, [userInfo]);
+
+    // redirect to organizer page if not attendee
+    useEffect(() => {
+        if(userInfo && userInfo.role === "organizer"){
+            window.location.href = "/organizerdashboard";
         }
     }, [userInfo]);
 

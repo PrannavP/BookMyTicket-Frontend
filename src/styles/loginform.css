@@ -1,5 +1,5 @@
 .main-container{
-    outline: 1px solid red;
+    /* outline: 1px solid red; */
     height: 100vh;
 }
 
@@ -31,7 +31,7 @@
     border-radius: 5px;
     padding: 0.8% 3%;
     width: 20%;
-    height: 38.2vh;
+    height: 40vh;
 }
 
 .login-form-heading > h3{
@@ -109,4 +109,8 @@
     font-weight: 500;
     letter-spacing: 1px;
     cursor: pointer;
+}
+
+.login-checkbox-container{
+    margin-left: -15px;
 }
