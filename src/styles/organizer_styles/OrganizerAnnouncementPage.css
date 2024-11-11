@@ -1,0 +1,73 @@
+/* Styles for ChangePasswordComponent */
+.announcement-send-email-container {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 20px 20px 20px;
+    /* max-width: 35%; */
+    float: right;
+    margin-right: 18%;
+    width: 40%;
+    /* margin-left: 16%; */
+    margin-top: 2.65%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-send-email-container h3 {
+    color: #003366;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.announcement-email-subject-container,
+.announcement-email-body-container{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.announcement-email-subject-label, .announcement-email-body-label{
+    font-weight: bold;
+    color: #333;
+}
+
+.announcement-email-subject-label-container, .announcement-email-subject-label{
+    margin-bottom: 1.2%;
+}
+
+.email-subject-input,
+.email-body-input{
+    width: 96.5%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.email-body-input{
+    /* resize: vertical; */
+    margin-top: 1%;
+}
+
+.email-subject-input:focus, .email-body-input:focus{
+    border-color: #FF6F00;
+    outline: none;
+}
+
+.announcement-send-email-button-container {
+    text-align: center;
+}
+
+.announcement-send-email-button-container button {
+    background-color: #FF6F00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.announcement-send-email-button-container button:hover {
+    background-color: #e65c00;
+}

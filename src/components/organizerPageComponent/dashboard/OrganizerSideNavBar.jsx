@@ -5,7 +5,7 @@ import { IoTicketOutline } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
 import { FaTicketSimple } from "react-icons/fa6";
 import { TbCalendarEvent } from "react-icons/tb"
-import { FaMoneyCheckAlt } from "react-icons/fa";
+import { TfiAnnouncement } from "react-icons/tfi";
 
 import LogoutButton from './LogoutButtonComponent';
 
@@ -69,15 +69,15 @@ const OrganizerSideNavBar = ({ profileImageUrl, profileName }) => {
                                 </div>
                             </Link>
                         </li>
-                        <li className={`organizer-side-navbar-link ${isActive('/organizerfinances') ? 'active' : ''}`}>
-                            <Link to="/organizerfinances">
+                        <li className={`organizer-side-navbar-link ${isActive('/organizer-send-mail') ? 'active' : ''}`}>
+                            <Link to="/organizer-send-mail">
                                 <div className="side-nav-bar-icon-container">
                                     <IconContext.Provider value={{ size: "1.5em" }}>
-                                        <FaMoneyCheckAlt />
+                                        <TfiAnnouncement />
                                     </IconContext.Provider>
                                 </div>
                                 <div className="side-nav-bar-text-container">
-                                    Finances
+                                    Announcements
                                 </div>    
                             </Link>
                         </li>

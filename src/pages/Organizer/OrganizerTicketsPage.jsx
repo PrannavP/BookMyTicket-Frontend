@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useUser } from "../../hooks/useUser";
 
 import OrganizerSideNavBar from "../../components/organizerPageComponent/dashboard/OrganizerSideNavBar";
+import TicketsListsComponent from "../../components/organizerPageComponent/tickets-page/TicketsListsComponent";
 
 const OrganizerTicketsPage = () => {
     const { userInfo, error } = useUser();
@@ -32,6 +33,7 @@ const OrganizerTicketsPage = () => {
         <>
             <OrganizerSideNavBar profileImageUrl={userInfo.image} profileName={userInfo.full_name} />
             <h1>Organizer Tickets Page</h1>
+            <TicketsListsComponent organizer={userInfo.full_name} />
         </>
     )
 };

@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useUser } from "../../hooks/useUser";
 
+import AnnouncementPageComponent from "../../components/organizerPageComponent/announcements/AnnouncementPageComponent";
 import OrganizerSideNavBar from "../../components/organizerPageComponent/dashboard/OrganizerSideNavBar";
 
-const OrganizerFinancesPage = () => {
+import '../../styles/organizer_styles/OrganizerAnnouncementPage.css';
+
+const OrganizerSendEmailPage = () => {
     const { userInfo, error } = useUser();
 
     useEffect(() => {
@@ -28,10 +31,10 @@ const OrganizerFinancesPage = () => {
 
     return(
         <>
-        <OrganizerSideNavBar profileImageUrl={userInfo.image} profileName={userInfo.full_name} />
-        <h1>Organizer Finances Page</h1>
+            <OrganizerSideNavBar profileImageUrl={userInfo.image} profileName={userInfo.full_name} />
+            <AnnouncementPageComponent />
         </>
     )
 };
 
-export default OrganizerFinancesPage;
+export default OrganizerSendEmailPage;

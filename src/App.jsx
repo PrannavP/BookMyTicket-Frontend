@@ -18,7 +18,7 @@ import SuccessfulPayment from './pages/SuccessfulPaymentPage';
 import OrganizerDashboardPage from './pages/Organizer/OrgainzerDashboardPage';
 import OrganizerTicketsPage from './pages/Organizer/OrganizerTicketsPage';
 import OrganizerEventsPage from './pages/Organizer/OrganizerEventsPage';
-import OrganizerFinancesPage from './pages/Organizer/OrganizerFinancesPage';
+import OrganizerSendEmailPage from './pages/Organizer/OrganizerSendEmailPage';
 
 const router = createBrowserRouter([
 	{
@@ -107,9 +107,9 @@ const router = createBrowserRouter([
 				</UserProvider>
 	},
 	{
-		path: '/organizerfinances',
+		path: '/organizer-send-mail',
 		element: <UserProvider>
-					<OrganizerFinancesPage />
+					<OrganizerSendEmailPage />
 				</UserProvider>
 	},
 ]);
