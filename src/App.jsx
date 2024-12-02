@@ -12,13 +12,14 @@ import AttendeeDashboardPage from './pages/Attendee/AttendeeDashboardPage';
 import RegisterPage from './pages/RegisterPage';
 import EventDetailsPage from "./pages/EventDetailsPage";
 import TestPage from './pages/TestPage';import AttendeeTicketsPage from './pages/Attendee/AttendeeTicketsPage';
-import AttendeeUpcomingEventsPage from './pages/Attendee/AttendeeUpcomingEventsPage';
+import AttendeeCommunityPage from './pages/Attendee/AttendeeCommunityPage';
 import AttendeeSettingsPage from './pages/Attendee/AttendeeSettingsPage';
 import SuccessfulPayment from './pages/SuccessfulPaymentPage';
 import OrganizerDashboardPage from './pages/Organizer/OrgainzerDashboardPage';
 import OrganizerTicketsPage from './pages/Organizer/OrganizerTicketsPage';
 import OrganizerEventsPage from './pages/Organizer/OrganizerEventsPage';
 import OrganizerSendEmailPage from './pages/Organizer/OrganizerSendEmailPage';
+import AttendeeCommunityEventPage from './pages/Attendee/AttendeeCommunityEventPage';
 
 const router = createBrowserRouter([
 	{
@@ -71,10 +72,18 @@ const router = createBrowserRouter([
 				</UserProvider>
 	},
 	{
-		path: '/upcomingevents',
+		path: '/community',
 		element: <UserProvider>
-					<AttendeeUpcomingEventsPage />
+					<AttendeeCommunityPage />
 				</UserProvider>
+	},
+	{
+		path: '/community/:id',
+		element: <EventProvider>
+					<UserProvider>
+						<AttendeeCommunityEventPage />
+					</UserProvider>
+				</EventProvider>
 	},
 	{
 		path: '/attendeesettings',

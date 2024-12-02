@@ -1,10 +1,11 @@
+import { isAfter, isToday } from "date-fns";
+
 import { useEffect, useContext } from "react";
 import { EventContext } from "../../context/EventContext";
 import '../../styles/eventspage_styles/event_card.css';
 import Loader from "../Loader/Loader";
 import { Link } from "react-router-dom";
 import EventErrorCompnent from "./EventErrorComponent";
-
 
 const EventDetailsCard = () => {
     const { events, loadDefaultEvents, loading, error } = useContext(EventContext);
@@ -23,37 +24,49 @@ const EventDetailsCard = () => {
 
     return (
         <div className="events-details-section">
-            {loading &&  <Loader />}
+            {loading && <Loader />}
             {error && <EventErrorCompnent />}
             <ul className="events-details-cards">
-                {events.map(event => (
-                    <li key={event.id} className="event-detail-card">
-                        <div className="event-image-holder">
-                            <img src={`http://localhost:3000/uploads/event_image/${event.event_image}`} alt={event.event_name} width="300" />
-                        </div>
-                        <div className="event-title-holder">
-                            <h3>{event.event_name}</h3>
-                        </div>
-                        <div className="event-performer-holder event-card-info-div">
-                            <p>Performer: {event.event_performer}</p>
-                        </div>
-                        <div className="event-date-holder event-card-info-div">
-                            <p>Date: {formatDate(event.event_date)}</p>
-                        </div>
-                        <div className="event-time-holder event-card-info-div">
-                            <p>Time: {event.event_time}</p>
-                        </div>
-                        <div className="event-genre-holder event-card-info-div">
-                            <p>Genre: {event.event_category}</p>
-                        </div>
-                        <div className="event-location-holder event-card-info-div">
-                            <p>Location: {event.event_location}</p>
-                        </div>
-                        <div className="event-bookbtn-holder">
-                            <button><Link to={`/events/${event.id}`}>Book Now</Link></button>
-                        </div>
-                    </li>
-                ))}
+                {events
+                    .filter(event => {
+                        const eventDate = new Date(event.event_date);
+                        const today = new Date();
+                        return isAfter(eventDate, today) || isToday(eventDate); // Check if the event date is today or in the future
+                    })
+                    .map(event => (
+                        <li key={event.id} className="event-detail-card">
+                            <div className="event-image-holder">
+                                <img 
+                                    src={`http://localhost:3000/uploads/event_image/${event.event_image}`} 
+                                    alt={event.event_name} 
+                                    width="300" 
+                                />
+                            </div>
+                            <div className="event-title-holder">
+                                <h3>{event.event_name}</h3>
+                            </div>
+                            <div className="event-performer-holder event-card-info-div">
+                                <p>Performer: {event.event_performer}</p>
+                            </div>
+                            <div className="event-date-holder event-card-info-div">
+                                <p>Date: {formatDate(event.event_date)}</p>
+                            </div>
+                            <div className="event-time-holder event-card-info-div">
+                                <p>Time: {event.event_time}</p>
+                            </div>
+                            <div className="event-genre-holder event-card-info-div">
+                                <p>Genre: {event.event_category}</p>
+                            </div>
+                            <div className="event-location-holder event-card-info-div">
+                                <p>Location: {event.event_location}</p>
+                            </div>
+                            <div className="event-bookbtn-holder">
+                                <button>
+                                    <Link to={`/events/${event.id}`}>Book Now</Link>
+                                </button>
+                            </div>
+                        </li>
+                    ))}
             </ul>
         </div>
     );

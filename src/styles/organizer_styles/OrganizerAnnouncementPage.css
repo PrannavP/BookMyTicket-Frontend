@@ -49,7 +49,7 @@
     margin-top: 1%;
 }
 
-.email-subject-input:focus, .email-body-input:focus{
+.email-subject-input:focus{
     border-color: #FF6F00;
     outline: none;
 }

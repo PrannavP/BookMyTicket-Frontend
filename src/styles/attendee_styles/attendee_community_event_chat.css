@@ -1,0 +1,31 @@
+.comment-input-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    width: 50%;
+    margin-left: 33%;
+    margin-bottom: 0.5%;
+}
+
+.comment-input-container input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.comment-input-container button {
+    background-color: #FF6F00; /* Main color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.comment-input-container button:hover {
+    background-color: #e65c00;
+}

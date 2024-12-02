@@ -4,8 +4,9 @@ import { useUser } from "../../hooks/useUser";
 
 import SideNavBar from "../../components/attendeepageComponent/SideNavBar";
 import TopBar from "../../components/attendeepageComponent/TopBar";
+import CommunityEventsComponent from "../../components/attendeepageComponent/community-page/CommunityEventsComponent";
 
-const AttendeeUpcomingEventsPage = () => {
+const AttendeeCommunityPage = () => {
     const { userInfo, error } = useUser();
 
     useEffect(() => {
@@ -24,9 +25,10 @@ const AttendeeUpcomingEventsPage = () => {
     return(
         <>
             <SideNavBar profileImageUrl={userInfo.image} profileName={userInfo.full_name} />
-            <TopBar title="Upcoming Events" />
+            <TopBar title="Community" />
+            <CommunityEventsComponent />
         </>
     );
 };
 
-export default AttendeeUpcomingEventsPage;
+export default AttendeeCommunityPage;

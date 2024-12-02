@@ -110,8 +110,13 @@ const OrganizerEventsPage = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            console.log('Event created successfully:', response.data);
-            handleCloseModal();
+            // console.log(response);
+
+            // refresh the page inorder to clear the input fields.
+            if(response.status === 201 || response.statusText === "Created"){
+                handleCloseModal();
+                window.location.reload();
+            }
         } catch (error) {
             console.error('Error creating event:', error);
         }

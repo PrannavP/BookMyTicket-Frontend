@@ -57,15 +57,15 @@ const SideNavBar = ({ profileImageUrl, profileName }) => {
                                 </div>
                             </Link>
                         </li>
-                        <li className={`attendee-side-navbar-link ${isActive('/upcomingevents') ? 'active' : ''}`}>
-                            <Link to='/upcomingevents'>
+                        <li className={`attendee-side-navbar-link ${isActive('/community') ? 'active' : ''}`}>
+                            <Link to='/community'>
                                 <div className="side-nav-bar-icon-container">
                                     <IconContext.Provider value={{ size: "1.5em" }}>
                                         <TbCalendarEvent />
                                     </IconContext.Provider>
                                 </div>
                                 <div className="side-nav-bar-text-container">
-                                    Upcoming Events
+                                    Community
                                 </div>
                             </Link>
                         </li>
