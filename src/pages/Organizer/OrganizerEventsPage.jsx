@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../../hooks/useUser";
-
 import '../../styles/organizer_styles/OrganizerEventsPage.css';
-
 import OrganizerSideNavBar from "../../components/organizerPageComponent/dashboard/OrganizerSideNavBar";
 import axios from "axios";
 
 const OrganizerEventsPage = () => {
     const { userInfo, error } = useUser();
     const [isCreateEventModalOpen, setIsCreateEventModalOpen] = useState(false);
+    const [organizerEvents, setOrganizerEvents] = useState([]);
 
     const [eventName, setEventName] = useState("");
     const [eventDate, setEventDate] = useState("");
@@ -17,14 +16,11 @@ const OrganizerEventsPage = () => {
     eventTime = `${eventTime}:00`;
 
     const [eventCategory, setEventCategory] = useState(''); // State to track selected option
-
     const [eventLocation, setEventLocation] = useState("");
     const [eventPerformer, setEventPerformer] = useState("");
     const [generalTicketPrice, setGeneralTicketPrice] = useState(0);
     const [vipTicketPrice, setVipTicketPrice] = useState(0);
     const [totalTickets, setTotalTickets] = useState(0);
-    
-    // const [eventImage, setEventImage] = useState(null);
     const [eventImageFile, setEventImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState(null);
     
@@ -46,26 +42,39 @@ const OrganizerEventsPage = () => {
         }
     }, [userInfo]);
 
+    // Fetch events organized by the current user
+    useEffect(() => {
+        const fetchEvents = async () => {
+            try {
+                const response = await axios.post("http://localhost:3000/organizer/events", {
+                    oName: userInfo.full_name
+                });
+                setOrganizerEvents(response.data.organizerEvents);
+            } catch (error) {
+                console.error('Error fetching events:', error);
+            }
+        };
+
+        if (userInfo) {
+            fetchEvents();
+        }
+    }, [userInfo]);
+
     // Handle loading state
     if (!userInfo) return <p>Loading...</p>;
 
     // Handle error state
     if (error) return <p>{error}</p>;    
 
-    // console.log(userInfo.full_name);
-
     // Image change handler to display preview
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            // setEventImage(URL.createObjectURL(file));
-
             const reader = new FileReader();
             reader.onloadend = () => {
                 setImagePreview(reader.result); // Set preview URL to state
             };
             reader.readAsDataURL(file);
-
             setEventImageFile(file);
         }
     };
@@ -80,15 +89,6 @@ const OrganizerEventsPage = () => {
 
     const handleCreateNewEvent = async (e) => {
         e.preventDefault();
-
-        // validate fields
-        // if(!eventName || !eventDate || !eventTime || !eventCategory
-        //     || !eventLocation || !eventPerformer || !generalTicketPrice || !vipTicketPrice
-        //     || !totalTickets
-        // ){
-        //     alert('Please fill in all fields.');
-        //     return;
-        // }
 
         const formData = new FormData();
         formData.append('event_name', eventName);
@@ -110,7 +110,6 @@ const OrganizerEventsPage = () => {
                     'Content-Type': 'multipart/form-data',
                 },
             });
-            // console.log(response);
 
             // refresh the page inorder to clear the input fields.
             if(response.status === 201 || response.statusText === "Created"){
@@ -127,10 +126,24 @@ const OrganizerEventsPage = () => {
             <OrganizerSideNavBar profileImageUrl={userInfo.image} profileName={userInfo.full_name} />
             <header className="organizer-events-page-header">
                 <h1 className="organizer-events-page-title">Organizer Events Page</h1>
-
                 <button onClick={handleCreateNewEventButtonClick}>Create New Event</button>
             </header>
 
+            <div className="events-list">
+                <ul>
+                    {organizerEvents.map(event => (
+                        <li key={event.id} className="event-item">
+                            <h3>{event.event_name}</h3>
+                            <p>Date: {new Date(event.event_date).toLocaleDateString()}</p>
+                            <p>Time: {event.event_time}</p>
+                            <p>Location: {event.event_location}</p>
+                            <p>Performer: {event.event_performer}</p>
+                            <p>Category: {event.event_category}</p>
+                            <img src={`http://localhost:3000/uploads/event_image/${event.event_image}`} alt={event.event_name} width="150" />
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
             {isCreateEventModalOpen && (
                 <div className="modal-overlay">

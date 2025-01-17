@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import '../../../styles/attendee_styles/attendee_community_event_chat.css';
 
@@ -18,8 +20,23 @@ const CommunityEventChatComponent = ({ uId }) => {
             });
 
             if(response.status === 200){
-                alert("Commented Success!");
-                window.location.reload();
+                /// toast message
+                toast.success("Comment Posted!", {
+                    position: "top-right",
+                    autoClose: 4000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                });
+
+                // clear the input field
+                setCommentInputValue("");
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 4200);
             }else{
                 alert("Could not post comment!");
             }
@@ -34,6 +51,7 @@ const CommunityEventChatComponent = ({ uId }) => {
     }
 
     return (
+        <>
         <div className="comment-input-container">
             <input
                 type="text"
@@ -43,6 +61,8 @@ const CommunityEventChatComponent = ({ uId }) => {
             />
             <button onClick={handleComment}>Post Comment</button>
         </div>
+        <ToastContainer />
+        </>
     );
 };
 

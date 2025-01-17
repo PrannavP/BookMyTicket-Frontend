@@ -1,6 +1,59 @@
-.payment-message-container{
-    background-color: #FFFFFF;
+.payment-message-container {
     display: flex;
     flex-direction: column;
-    
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.payment-message-header-container h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.payment-message-icon-container {
+    margin-bottom: 20px;
+}
+
+.payment-message-status-container p {
+    font-size: 1.2em;
+    color: #555;
+    margin: 10px 0;
+}
+
+.payment-message-status-container strong {
+    color: #333;
+}
+
+.payment-message-image-container {
+    margin-top: 20px;
+}
+
+.payment-message-image-container img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment-message-status-container button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF6F00;
+    color: white;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.payment-message-status-container button:hover {
+    background-color: #e65c00;
 }

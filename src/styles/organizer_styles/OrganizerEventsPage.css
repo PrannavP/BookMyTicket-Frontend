@@ -1,116 +1,156 @@
+/* Container Styling */
 .organizer-events-page-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #ddd;
 }
 
 .organizer-events-page-title {
-    margin: 0;
+    font-size: 24px;
+    color: #333;
 }
 
-/* button {
-    margin-left: 20px;
-} */
+.organizer-events-page-header button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF6F00;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
 
-/* Overlay and Modal Styling */
+.organizer-events-page-header button:hover {
+    background-color: #e65c00;
+}
+
+.events-list {
+    padding: 20px;
+}
+
+.events-list h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.events-list ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.event-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.event-item h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.event-item p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.event-item img {
+    max-width: 100%;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    object-fit: contain; /* Scales image to fit within the container without cropping */
+}
+
+/* Modal Styling */
 .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto; /* Allow scrolling if modal content exceeds viewport height */
 }
 
 .modal {
-    position: relative;
     background: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    width: 100%;
-    max-height: 90vh; /* Keeps modal within viewport height */
-    overflow-y: auto; /* Scroll if content overflows */
+    width: 700px;
+    max-width: 90%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-height: 90%; /* Limit modal height to 90% of viewport height */
+    overflow-y: auto; /* Allow scrolling within the modal */
 }
 
 .modal h2 {
     margin-top: 0;
-    color: #003366;
+    margin-bottom: 20px;
+    color: #333;
     text-align: center;
-    font-size: 24px;
 }
 
-/* Close Button in Top-Right Corner */
 .close-button {
     position: absolute;
     top: 10px;
     right: 10px;
-    background: none;
+    background: #dc3545;
+    color: white;
     border: none;
-    font-size: 20px;
+    border-radius: 5px;
+    padding: 10px 15px;
     cursor: pointer;
-    color: #003366;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 .close-button:hover {
-    color: #002244;
+    background-color: #c82333;
 }
 
-/* Form Layout */
-.modal .form {
+.form {
     display: flex;
     flex-direction: column;
 }
 
-fieldset {
-    border: 1px solid #ccc;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-}
-
-legend {
-    font-size: 18px;
-    color: #003366;
-    font-weight: bold;
-    padding: 0 5px;
-}
-
-/* Label and Input Styling */
 .form-group {
-    display: flex;
-    align-items: center;
     margin-bottom: 15px;
 }
 
 .form-group label {
-    width: 30%; /* Adjust width as needed */
-    font-weight: bold;
-    color: #003366;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
 }
 
 .form-group input,
 .form-group select {
-    width: 70%;
+    width: 100%;
     padding: 10px;
-    margin-left: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
 }
 
-.form-group input:focus,
-.form-group select:focus {
-    outline: none;
-    border-color: #003366;
-    box-shadow: 0 0 5px rgba(0, 51, 102, 0.2);
-}
-
-/* File Input Styling */
 .file-input {
     display: none;
 }
@@ -118,39 +158,24 @@ legend {
 .file-input-label {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #FF6F00;
-    color: white;
-    text-align: center;
-    cursor: pointer;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    margin-left: 10px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .file-input-label:hover {
-    background-color: #e65c00;
+    background-color: #e9ecef;
 }
 
-/* Image Preview Styling */
 .image-preview {
-    width: 100%;
-    max-height: 200px;
     margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed #ccc;
-    padding: 10px;
-    background-color: #f3f3f3;
-    overflow: hidden; /* Ensures the image doesn’t exceed the container */
 }
 
 .image-preview img {
     max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
     border-radius: 5px;
-    object-fit: contain; /* Scales image to fit within the container without cropping */
 }
 
 /* Button Styling */
@@ -182,4 +207,8 @@ legend {
 
 .close-button:hover {
     background-color: #c82333;
+}
+
+fieldset{
+    padding: 10px;
 }

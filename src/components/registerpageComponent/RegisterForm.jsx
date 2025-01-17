@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/registerform.css';
 
 const RegisterForm = () => {
@@ -21,6 +23,8 @@ const RegisterForm = () => {
     
     const fullname = `${firstName} ${lastName}`;
 
+    const [errors, setErrors] = useState({});
+
     // Image handler
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -32,127 +36,62 @@ const RegisterForm = () => {
 
     const handleCheckboxChange = (event) => {
         setIsOrganizer(event.target.checked);
-        console.log(event.target.value);
     };
 
-    // const handleRegister = async (e) => {
-    //     e.preventDefault();
+    const validateForm = () => {
+        const newErrors = {};
 
-    //     if (!profileImageFile || !firstName || !lastName || !email || !phonenumber || !password) {
-    //         alert('Please fill in all fields.');
-    //         return;
-    //     }
+        // Validate first name
+        if (!/^[a-zA-Z]+$/.test(firstName)) {
+            newErrors.firstName = 'First name should only contain letters.';
+        }
 
-    //     if (password !== confirmPassword) {
-    //         alert('Passwords do not match.');
-    //         return;
-    //     }
+        // Validate last name
+        if (!/^[a-zA-Z]+$/.test(lastName)) {
+            newErrors.lastName = 'Last name should only contain letters.';
+        }
 
-    //     const formData = new FormData();
-    //     formData.append('full_name', fullname);
-    //     formData.append('email', email);
-    //     formData.append('password', password);
-    //     formData.append('contact_number', phonenumber);
-    //     formData.append('address', address);
-    //     formData.append('age', age);
-    //     formData.append('profile_image', profileImageFile);
+        // Validate email
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            newErrors.email = 'Invalid email format.';
+        }
 
-    //     if(isOrganizer){
-    //         formData.append("user_type", "organizer");
-    //     }else{
-    //         formData.append("user_type", "attendee");
-    //     }
+        // Validate phone number
+        if (!/^\d{10,}$/.test(phonenumber)) {
+            newErrors.phonenumber = 'Phone number should only contain numbers and be at least 10 digits long.';
+        }
 
-    //     try{
-    //         await axios.post('http://localhost:3000/register', formData, {
-    //             headers:{
-    //                 'Content-Type': 'multipart/form-data',
-    //             }
-    //         });
-            
-    //         window.location.href = '/login';
-    //     }catch(err){
-    //         alert("Something went wrong in registration: " + err.message);
-    //     }
+        // Validate password match
+        if (password !== confirmPassword) {
+            newErrors.password = 'Passwords do not match.';
+        }
 
-    //     // organizer formdata
-    //     // const organizerFormData = new FormData();
-    //     // organizerFormData.append('organizer_name', fullname);
-    //     // organizerFormData.append('contact', phonenumber);
-    //     // organizerFormData.append('email', email);
-    //     // organizerFormData.append('password', password);
-    //     // organizerFormData.append('address', address);
-    //     // organizerFormData.append('profile_image', profileImageFile);
+        setErrors(newErrors);
 
-    //     // console.log(profileImageFile);
-    //     // for (let pair of organizerFormData.entries()) {
-    //     //     console.log(pair[0] + ', ' + pair[1]);
-    //     // }
+        // Show toast notifications for errors
+        Object.keys(newErrors).forEach((key) => {
+            toast.error(newErrors[key], {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+        });
 
-    //     // // organizer user formdata
-    //     // const organizerUserFormData = new FormData();
-    //     // organizerFormData.append('full_name', fullname);
-    //     // organizerFormData.append('contact_number', phonenumber);
-    //     // organizerFormData.append('email', email);
-    //     // organizerFormData.append('password', password);
-    //     // organizerFormData.append('address', address);
-    //     // organizerFormData.append('age', age);
-    //     // organizerFormData.append('profile_image', profileImageFile);
-    //     // organizerFormData.append('user_type', 'organizer');
-
-    //     // if(isOrganizer){
-    //     //     alert("Registering as organizer.");
-    //     //     try{
-    //     //         await axios.post("http://localhost:3000/organizer/register", organizerFormData, {
-    //     //             headers: {
-    //     //                 'Content-Type': 'multipart/form-data',
-    //     //             } 
-    //     //         });
-
-    //     //         // await axios.post('http://localhost:3000/register', organizerUserFormData, {
-    //     //         //     headers: {
-    //     //         //         'Content-Type': 'multipart/form-data'
-    //     //         //     }
-    //     //         // });
-
-    //     //         window.location.href = '/login';
-    //     //     }catch(err){
-    //     //         alert("Something went wrong in organizer registration. " + err.message);
-    //     //     }
-    //     // }else{
-    //     //     alert("Registering as attendee.");
-    //     //     try {
-    //     //         await axios.post('http://localhost:3000/register', formData, {
-    //     //             headers: {
-    //     //                 'Content-Type': 'multipart/form-data'
-    //     //             }
-    //     //         });
-    
-    //     //         window.location.href = '/login';
-    
-    //     //     } catch (err) {
-    //     //         alert('Something went wrong in registration: ' + err.message);
-    //     //     }
-    //     // }
-    // };
+        // Return true if no errors
+        return Object.keys(newErrors).length === 0;
+    };
 
     const handleRegister = async (e) => {
         e.preventDefault();
-    
-        // Validate input fields
-        if (!profileImageFile || !firstName || !lastName || !email || !phonenumber || !password) {
-            alert('Please fill in all fields.');
-            return;
-        }
-    
-        if (password !== confirmPassword) {
-            alert('Passwords do not match.');
+
+        if (!validateForm()) {
             return;
         }
 
-        console.log(profileImageFile);
-    
-        // Prepare form data for attendee or organizer registration
         const formData = new FormData();
         formData.append('full_name', fullname);
         formData.append('email', email);
@@ -162,38 +101,35 @@ const RegisterForm = () => {
         formData.append('age', age);
         formData.append('profile_image', profileImageFile);
         formData.append('user_type', isOrganizer ? 'organizer' : 'attendee');
-    
-        // Organizer specific form data
-        const organizerFormData = new FormData();
-        organizerFormData.append('organizer_name', fullname);
-        organizerFormData.append('contact', phonenumber);
-        organizerFormData.append('email', email);
-        organizerFormData.append('password', password);
-        organizerFormData.append('address', address);
-        organizerFormData.append('profile_image', profileImageFile);
-    
+
         try {
-            if (isOrganizer) {
-                // Call the first API for organizer registration
-                alert('Registering as organizer.');
-                await axios.post('http://localhost:3000/organizer/register', organizerFormData, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    }
-                });
-            }
-    
-            // Call the second API to register the user (whether attendee or organizer)
             await axios.post('http://localhost:3000/register', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
             });
-    
-            // Redirect to login after successful registration
+
+            toast.success('Registration successful!', {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+
             window.location.href = '/login';
         } catch (err) {
-            alert('Something went wrong in registration: ' + err.message);
+            toast.error('Something went wrong in registration: ' + err.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
     };
 
@@ -224,25 +160,30 @@ const RegisterForm = () => {
                         <div className="first-name-input-container">
                             <label htmlFor="firstname">First Name</label><br />
                             <input type="text" name="firstname" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+                            {errors.firstName && <p className="error">{errors.firstName}</p>}
                         </div>
 
                         <div className="last-name-input-container">
                             <label htmlFor="lastname">Last Name</label><br />
                             <input type="text" name="lastname" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+                            {errors.lastName && <p className="error">{errors.lastName}</p>}
                         </div>
 
                         <div className="other-input-container">
                             <label htmlFor="email">Email</label><br />
                             <input type="email" name='email' value={email} onChange={(e) => setEmail(e.target.value)} /><br />
+                            {errors.email && <p className="error">{errors.email}</p>}
 
                             <label htmlFor="phonenumber">Phone Number</label><br />
                             <input type="tel" name='phonenumber' value={phonenumber} onChange={(e) => setPhoneNumber(e.target.value)} /><br />
+                            {errors.phonenumber && <p className="error">{errors.phonenumber}</p>}
 
                             <label htmlFor="password">Password</label><br />
                             <input type="password" name='password' value={password} onChange={(e) => setPassword(e.target.value)} /><br />
 
                             <label htmlFor="c_password">Confirm Password</label><br />
                             <input type="password" name='c_password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} /><br />
+                            {errors.password && <p className="error">{errors.password}</p>}
                         </div>
 
                         <div className="checkbox-container">
@@ -255,6 +196,7 @@ const RegisterForm = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </>
     );
 };

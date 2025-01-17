@@ -105,7 +105,7 @@ const SuccessfulPaymentMessage = () => {
                     <p><strong>Status:</strong> {response.paymentDetails.status}</p>
                     <p><strong>Total Amount:</strong> {response.paymentDetails.total_amount}</p>
                     <p><strong>Transaction UUID:</strong> {response.paymentDetails.transaction_uuid}</p>
-                    <Link to={`/events/${id}`}><button>Click Me</button></Link>
+                    <Link to={`/events/${id}`}><button>Done!</button></Link>
                 </div>
             ) : (
                 <p>No data found</p>
